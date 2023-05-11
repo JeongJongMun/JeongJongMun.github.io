@@ -8,6 +8,18 @@
     <language>en-gb</language>
     <lastBuildDate>Sun, 12 May 2019 12:14:34 +0600</lastBuildDate><atom:link href="https://JeongJongMun.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>SecondBlog</title>
+      <link>https://JeongJongMun.github.io/blog/secondblog/</link>
+      <pubDate>Thu, 11 May 2023 20:20:15 +0900</pubDate>
+      
+      <guid>https://JeongJongMun.github.io/blog/secondblog/</guid>
+      <description>안녕하세요. 저는 정종문입니다.
+오픈소스 소프트웨어 입문 시간에 포트폴리오 겸 블로그를 만들어보았습니다.
+Hugo와 Github Pages를 사용하였습니다.
+감사합니다.</description>
+    </item>
+    
+    <item>
       <title>Making a new Website</title>
       <link>https://JeongJongMun.github.io/blog/first-blog/</link>
       <pubDate>Tue, 31 Dec 2019 12:14:34 +0600</pubDate>
