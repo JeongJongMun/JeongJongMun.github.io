@@ -8,12 +8,16 @@ tail_includes:
   - post-nav
   - comments
 ---
-
 {% include lang.html %}
 
 <article class="px-1">
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
+    <div style="text-align: left;">
+      <a href="https://hits.seeyoufarm.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}"target="_blank">
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}&count_bg=%23252525&title_bg=%23252525&icon=unrealengine.svg&icon_color=%23FFFFFF&title=%EB%B0%A9%EB%AC%B8%EC%9E%90+%EC%88%98&edge_flat=false">
+      </a>
+    </div>
 
     <div class="post-meta text-muted">
       <!-- published date -->
