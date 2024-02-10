@@ -17,7 +17,7 @@ image:
 
 ## 1. Ruby 설치
 https://rubyinstaller.org/downloads/   
-위 링크에서 WITH DEVKIT이 적혀있는 파일 중에서, 자신의 윈도우 운영체제에 맞춰 32bit or 64bit를 선택하여 설치합니다.   
+위 링크에서 WITH DEVKIT이 적혀있는 파일 중에서, 자신의 윈도우 운영체제에 맞춰 32bit or 64bit를 선택하여 최신 버전을 설치합니다.   
 `x86 = 32bit, x64 = 64bit`   
 윈도우에서 파일을 받으니 안전하지 않다 뜨는데, 그냥 진행합시다.   
 
