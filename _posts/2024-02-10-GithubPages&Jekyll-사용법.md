@@ -105,7 +105,7 @@ git commit -m "원하는 커밋 메시지"
 git push
 ```
 
-푸시 후 몇분 정도 기다리고, `https://{github-username}.github.io`로 접속하여 블로그가 정상적으로 뜨는지 확인합니다.
+푸시 후 Github Action을 통해 배포가 정상적으로 되는지 기다리고, `https://{github-username}.github.io`로 접속하여 블로그가 정상적으로 뜨는지 확인합니다.
 
 ## 10. Trouble Shooting
 저는 위 과정을 진행하면서 몇가지 문제가 발생했습니다.
@@ -120,7 +120,7 @@ git push
     ```
     - 이렇게 깃허브에 푸시 후, 배포 과정에서 오류가 발생했습니다.
     - 해당 오류는 `assets/js/dist/` 폴더에 js 파일이 없어서 발생한 오류입니다.
-    - 아래 명령어를 입력하여 해결했습니다.
+    - 아래 명령어를 입력하여 해결했습니다. (npm install이 안된다면 node.js 설치)
       ```shell
       npm install -g win-node-env
       NODE_ENV=production npx rollup -c --bundleConfigAsCjs
