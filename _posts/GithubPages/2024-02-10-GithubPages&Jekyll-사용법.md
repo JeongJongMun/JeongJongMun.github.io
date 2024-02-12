@@ -85,7 +85,7 @@ _위 사진과 같이 나온다면, 로컬에서 테스트 성공입니다._
 
 ## 6. Jekyll 테마 다운로드
 
-[http://jekyllthemes.org/themes/jekyll-theme-chirpy/](http://jekyllthemes.org/themes/jekyll-theme-chirpy/)   
+http://jekyllthemes.org/themes/jekyll-theme-chirpy/  
 저는 위 링크에서 Chirpy 테마를 다운로드 받았습니다.
 다운로드 받은 파일을 압축해제하고, 해당 폴더를 클론한 레포지토리에 덮어씌웁니다.
 
