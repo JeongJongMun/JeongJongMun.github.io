@@ -4,7 +4,7 @@ writer: Langerak
 date: 2024-02-10 11:33:00 +0800
 categories: [GitHub Pages, Jekyll]
 tags: [GitHub Pages, Jekyll]
-pin: true
+pin: false
 math: true
 mermaid: true
 image:

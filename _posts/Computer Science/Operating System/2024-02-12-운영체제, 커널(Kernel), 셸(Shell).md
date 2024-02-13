@@ -4,7 +4,7 @@ writer: Langerak
 date: 2024-02-12 12:00:00 +0800
 categories: [Computer Science, Operating System]
 tags: [Computer Science, Operating System]
-pin: true
+pin: false
 math: true
 mermaid: true
 image:
