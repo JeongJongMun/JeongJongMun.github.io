@@ -68,3 +68,9 @@ e.g. Docker, Kubernetes
 {: .prompt-info }
 
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/7872ccbb-5a31-417f-91ff-820e8ef5b0ac){: width="250" height="250" .center}
+
+<br/>
+*참고*
+- [https://selog.tistory.com/entry/가상화-Virtualization가상화-개념-쉽게-이해하기](https://selog.tistory.com/entry/가상화-Virtualization가상화-개념-쉽게-이해하기)
+- [[[가상화] 3. 가상머신(VM)과 하이퍼바이저 쉽게 이해하기](https://selog.tistory.com/entry/가상화-가상머신VM과-하이퍼바이저-쉽게-이해하기)](https://selog.tistory.com/entry/가상화-가상머신VM과-하이퍼바이저-쉽게-이해하기)
+- [https://minkwon4.tistory.com/295](https://minkwon4.tistory.com/295)
