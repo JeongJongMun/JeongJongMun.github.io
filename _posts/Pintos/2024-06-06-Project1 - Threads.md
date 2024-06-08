@@ -25,7 +25,7 @@ image:
 
 솔루션 이전까지의 내용은 깃북의 내용을 번역한 것과 크게 다름이 없으나, 제 주관적인 해석이 들어가 있으므로 잘못된 내용이 있을 수 있습니다.
 
-# Introduction
+## Introduction
 
 ---
 
@@ -37,7 +37,7 @@ image:
 
 이 프로젝트를 진행하기 전에 **동기화**에 대한 학습이 선행되어야 한다.
 
-## Understanding Threads
+### Understanding Threads
 
 첫 번째 단계는 기본으로 제공되는 스레드 시스템의 코드를 읽고 이해하는 것이다.
 
@@ -61,7 +61,7 @@ pintos는 이미 스레드 생성, 스레드 완료, 스레드 간 전환을 위
 
 Context Switching의 메커니즘은 `threads/thread.c`의 `thread_launch()`에 있다. (이해할 필요는 없다.) 현재 실행 중인 스레드의 상태를 저장하고 전환하려는 스레드의 상태를 가져온다.
 
-## Source Files
+### Source Files
 
 아래는 `threads`와 `include/threads` 디렉토리에 있는 파일에 대한 간략한 개요이다. 이 코드들의 대부분은 수정할 필요가 없지만, 어떤 코드를 살펴봐야 할지에 대한 도움이 될 수 있다.
 
@@ -274,7 +274,7 @@ Context Switching의 메커니즘은 `threads/thread.c`의 `thread_launch()`에 
     `printf()` 및 기타 몇 가지 함수를 구현한다.
     
 
-## Synchronization
+### Synchronization
 
 적절한 동기화는 **경쟁 조건(Race Condition), 독점자 문제(Readers-Writers Problem), 생산자-소비자 문제(Producer-Consumer Problem)** 과 같은 문제를 해결하는 데 있어 중요한 부분이다.
 
@@ -320,7 +320,7 @@ Alarm Clock의 경우 타이머 인터럽트는 잠자는 스레드를 깨워야
 
 `thread_yield()`를 호출하는 타이트한 루프는 Busy Waiting의 한 형태이다.
 
-# Alarm Clock
+## Alarm Clock
 
 ---
 
@@ -349,7 +349,7 @@ void timer_sleep (int64_t ticks);
 
 각각 특정 밀리초, 마이크로초 또는 나노초동안 실행을 일시 중단하기 위한 별도의 함수인 `timer_msleep()`, `timer_usleep()`, `timer_nsleep()`이 존재하지만 필요한 경우 `timer_sleep()`을 자동으로 호출한다. 
 
-## Solution
+### Solution
 
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/036ce12d-5134-4bb2-90ff-1028fce87a1b)
 _Busy Waiting 상태_
@@ -536,7 +536,7 @@ bool less_wakeup_ticks(const struct list_elem *a, const struct list_elem *b, voi
 }
 ```
 
-# Priority Scheduling
+## Priority Scheduling
 
 > pintos에서 **우선순위 스케줄링(Priority Scheduling)** 을 구현하고 **우선순위 역전(Priority Inversion)** 을 해결하기 위한 **우선순위 기부(Priority Donation)**을 구현하라
 > 
@@ -615,7 +615,7 @@ void thread_set_priority(int new_priority);
 
 스레드가 다른 스레드의 우선순위를 직접 수정할 수 있도록 인터페이스를 제공할 필요는 없고, 우선순위 스케줄러는 이후 프로젝트에서 사용되지 않는다.
 
-## Solution
+### Solution
 
 pintos는 현재 선입선출(FIFO) 스케줄링을 사용하므로, **우선순위 스케줄링으로 변경**해야 한다.
 
@@ -975,7 +975,7 @@ bool cond_priority(const struct list_elem *a, const struct list_elem  *b, void *
 }
 ```
 
-# Advanced Scheduler
+## Advanced Scheduler
 
 > **4.4BSD 스케줄러**와 비슷한 **Multi-Level Feedback Queue 스케줄러**를 구현하여 시스템에서 실행 중인 작업의 평균 응답 시간을 줄이라.
 > 
@@ -994,7 +994,7 @@ bool cond_priority(const struct list_elem *a, const struct list_elem  *b, void *
 
 고급 스케줄러는 이후 프로젝트에서 사용되지 않는다.
 
-## 4.4BSD Scheduler
+### 4.4BSD Scheduler
 
 **범용 스케줄러**의 목표는 스레드의 다양한 스케줄링 요구 사항의 균형을 맞추는 것이다.
 
@@ -1026,7 +1026,7 @@ Kaist 학생들은 여러 개의 큐를 사용하여 구현하면 10% 가산점�
 
 MLFQS에서 중요한 개념으로는 **nice, priority, recent_cpu, decay, load_average**가 있다.
 
-## Niceness
+### Niceness
 
 스레드 우선순위는 스케줄러가 아래 공식을 사용하여 동적으로 결정한다. 그러나 각 스레드에는 다른 스레드에 대한 스레드의 “nice” 정도를 결정하는 정수 nice 값도 있다.
 
@@ -1054,7 +1054,7 @@ int thread_set_nice(int nice);
 
 새 nice 값에 따라 스레드의 우선순위를 다시 **계산**한다. 실행 중인 스레드의 우선순위가 더 이상 높지 않으면 양보한다.
 
-## Calculating Priority
+### Calculating Priority
 
 스케줄러에는 64개의 우선순위가 있으며, 따라서 0(`PRI_MIN`)부터 63(`PRI_MAX`)까지 64개의 ready queue가 번호가 매겨져 있다. 스레드 우선순위는 **스레드 초기화 시 처음에 계산된다. 또한 모든 스레드에 대해 4 tick마다 한 번씩 다시 계산 된다. 두 경우 모두 공식에 의해 결정된다.**
 
@@ -1071,7 +1071,7 @@ int thread_set_nice(int nice);
 
 이 공식은 최근에 CPU 시간을 받은 스레드가 다음에 스케줄러가 실행될 때 CPU를 다시 할당받을 수 있는 우선순위를 낮게 부여한다. 최근에 CPU를 받지 않은 스레드는 `recent_cpu`가 0이 되므로 nice 값이 높지 않은 한, 곧 CPU를 할당 받을 수 있다.
 
-## Calculating `recent_cpu`
+### Calculating `recent_cpu`
 
 각 프로세스가 “최근” 받은 CPU 시간을 측정하려면 `recent_cpu`가 필요하다. 또한, 더 자세하게, **최근에 계산된 recent_cpu는 예전에 계산된 recent_cpu에 비해 더 큰 가중치를 부여**해야 한다.
 
@@ -1144,7 +1144,7 @@ int thread_get_recent_cpu(void);
 
 현재 스레드의 `recent_cpu` 값 * 100을 가까운 정수로 반올림하여 반환한다.
 
-## Calculating `load_avg`
+### Calculating `load_avg`
 
 시스템 로드 평균이라고도 하는 `load_avg`는 **지난 1분 동안 실행할 준비가 된 스레드의 평균 수를 추정**한다.
 
@@ -1169,7 +1169,7 @@ int thread_get_load_avg(void)
 
 현재 `load_avg` 값 * 100을 가까운 정수로 반올림하여 반환한다.
 
-## Summary
+### Summary
 
 다음 공식들은 **스케줄러를 구현하는 데 필요한 계산을 요약**한 것이다. 하지만 이 공식들이 스케줄러 요구 사항에 대한 모든 설명은 아니다.
 
@@ -1187,7 +1187,7 @@ int thread_get_load_avg(void)
     **load_avg = (59/60) * load_avg + (1/60) * ready_threads**
     
 
-## Solution
+### Solution
 
 여러 개의 큐를 사용하지 않고 **하나의 큐로 MLFQ(Multi-Level Feedback Queue)** 인 4.4BSD 스케줄러를 구현해야 한다.
 
@@ -1536,7 +1536,7 @@ void lock_release (struct lock *lock) {
 }
 ```
 
-# Result
+## Result
 
 ---
 
