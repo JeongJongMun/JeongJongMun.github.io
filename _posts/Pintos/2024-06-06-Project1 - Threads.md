@@ -37,9 +37,7 @@ image:
 
 이 프로젝트를 진행하기 전에 **동기화**에 대한 학습이 선행되어야 한다.
 
-## Background
-
-### Understanding Threads
+## Understanding Threads
 
 첫 번째 단계는 기본으로 제공되는 스레드 시스템의 코드를 읽고 이해하는 것이다.
 
@@ -63,7 +61,7 @@ pintos는 이미 스레드 생성, 스레드 완료, 스레드 간 전환을 위
 
 Context Switching의 메커니즘은 `threads/thread.c`의 `thread_launch()`에 있다. (이해할 필요는 없다.) 현재 실행 중인 스레드의 상태를 저장하고 전환하려는 스레드의 상태를 가져온다.
 
-### Source Files
+## Source Files
 
 아래는 `threads`와 `include/threads` 디렉토리에 있는 파일에 대한 간략한 개요이다. 이 코드들의 대부분은 수정할 필요가 없지만, 어떤 코드를 살펴봐야 할지에 대한 도움이 될 수 있다.
 
@@ -276,7 +274,7 @@ Context Switching의 메커니즘은 `threads/thread.c`의 `thread_launch()`에 
     `printf()` 및 기타 몇 가지 함수를 구현한다.
     
 
-### Synchronization
+## Synchronization
 
 적절한 동기화는 **경쟁 조건(Race Condition), 독점자 문제(Readers-Writers Problem), 생산자-소비자 문제(Producer-Consumer Problem)** 과 같은 문제를 해결하는 데 있어 중요한 부분이다.
 
@@ -351,7 +349,7 @@ void timer_sleep (int64_t ticks);
 
 각각 특정 밀리초, 마이크로초 또는 나노초동안 실행을 일시 중단하기 위한 별도의 함수인 `timer_msleep()`, `timer_usleep()`, `timer_nsleep()`이 존재하지만 필요한 경우 `timer_sleep()`을 자동으로 호출한다. 
 
-### Solution
+## Solution
 
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/036ce12d-5134-4bb2-90ff-1028fce87a1b)
 _Busy Waiting 상태_
@@ -617,7 +615,7 @@ void thread_set_priority(int new_priority);
 
 스레드가 다른 스레드의 우선순위를 직접 수정할 수 있도록 인터페이스를 제공할 필요는 없고, 우선순위 스케줄러는 이후 프로젝트에서 사용되지 않는다.
 
-### Solution
+## Solution
 
 pintos는 현재 선입선출(FIFO) 스케줄링을 사용하므로, **우선순위 스케줄링으로 변경**해야 한다.
 
