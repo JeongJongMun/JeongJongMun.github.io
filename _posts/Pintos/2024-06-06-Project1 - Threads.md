@@ -1079,9 +1079,9 @@ int thread_set_nice(int nice);
 
 대신, **지수 가중 이동 평균**을 사용하는데, 이는 일반적인 형태를 취한다.
 
-> $x(0)=f(0),$
-$x(t)=ax(t-1)+(1-a)f(t),$
-$a=k/(k+1),$
+> $x(0)=f(0),$   
+> $x(t)=ax(t-1)+(1-a)f(t),$   
+> $a=k/(k+1),$   
 > 
 
 여기서 $x(t)$는 정수 시간 $t>=0$에서의 이동 평균이고,
@@ -1092,10 +1092,10 @@ $k>0$은 감쇠 속도(rate of decay)를 제어한다.
 
 이 공식은 다음과 같이 몇 단계에 걸쳐 반복할 수 있다.
 
-> $x(1)=f(1),$
-> $x(2)=af(1)+f(2)$
-> $...$
-> $x(5)=a^4*f(1)+a^3*f(2)+a^2*f(3)+a^1*f(4)+a^0*f(5)$
+> $x(1)=f(1),$   
+> $x(2)=af(1)+f(2)$   
+> $...$   
+> $x(5)=a^4*f(1)+a^3*f(2)+a^2*f(3)+a^1*f(4)+a^0*f(5)$   
 
 
 $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a$, 시간 $t+2$에서 가중치 $a^2$ 등을 갖는다.
@@ -1114,10 +1114,10 @@ $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a
 
 > $recent\_cpu=(2*load\_avg)/(2*load\_avg+1)*recent\_cpu+nice$
 
-> $decay=(2*load\_avg)/(2*load\_avg+1)$
-> $recent\_cpu=decay*recent\_cpu$
-> $recent\_cpu=recent\_cpu+nice$
-> → $recent\_cpu=decay*recent\_cpu+nice$
+> $decay=(2*load\_avg)/(2*load\_avg+1)$   
+> $recent\_cpu=decay*recent\_cpu$   
+> $recent\_cpu=recent\_cpu+nice$   
+> → $recent\_cpu=decay*recent\_cpu+nice$   
 > 
 
 여기서 `load_avg`는 실행할 준비가 된 스레드 수의 이동 평균이다.
