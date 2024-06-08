@@ -8,7 +8,7 @@ pin: false
 math: true
 mermaid: true
 image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/3ccd34f9-5e11-412b-bf1a-afb8c4f3b972
+  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/d4e14d42-13d0-4100-86c0-4715e3464e19
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: Unity
 ---
