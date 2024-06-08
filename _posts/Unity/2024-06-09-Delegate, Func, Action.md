@@ -1,14 +1,14 @@
 ---
 title: "Delegate, Func, Action"
 writer: Langerak
-date: 2024-06-9 06:00:00 +0800
+date: 2024-06-9 01:00:00 +0800
 categories: [Unity]
 tags: [Unity]
 pin: false
 math: true
 mermaid: true
 image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/e753266b-b0f8-4c4d-9361-f0e8802987d2
+  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/e9c9f437-d76d-4f3b-b293-7f74db14e557
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: Unity
 ---
