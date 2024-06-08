@@ -1095,10 +1095,10 @@ $k>0$은 감쇠 속도(rate of decay)를 제어한다.
 이 공식은 다음과 같이 몇 단계에 걸쳐 반복할 수 있다.
 
 > $x(1)=f(1),$
-$x(2)=af(1)+f(2)$
-$...$
-$x(5)=a^4*f(1)+a^3*f(2)+a^2*f(3)+a^1*f(4)+a^0*f(5)$
-> 
+> $x(2)=af(1)+f(2)$
+> $...$
+> $x(5)=a^4*f(1)+a^3*f(2)+a^2*f(3)+a^1*f(4)+a^0*f(5)$
+
 
 $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a$, 시간 $t+2$에서 가중치 $a^2$ 등을 갖는다.
 
@@ -1115,12 +1115,11 @@ $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a
 또한 초당 한 번씩 이 공식을 사용하여 모든 스레드(RUNNING, READY, BLOCKED)에 대해 `recent_cpu` 값이 다시 계산된다.
 
 > $recent\_cpu=(2*load\_avg)/(2*load\_avg+1)*recent\_cpu+nice$
-> 
 
 > $decay=(2*load\_avg)/(2*load\_avg+1)$
-$recent\_cpu=decay*recent\_cpu$
-$recent\_cpu=recent\_cpu+nice$
-→ $recent\_cpu=decay*recent\_cpu+nice$
+> $recent\_cpu=decay*recent\_cpu$
+> $recent\_cpu=recent\_cpu+nice$
+> → $recent\_cpu=decay*recent\_cpu+nice$
 > 
 
 여기서 `load_avg`는 실행할 준비가 된 스레드 수의 이동 평균이다.
