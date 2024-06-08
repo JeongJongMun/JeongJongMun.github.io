@@ -1058,7 +1058,7 @@ int thread_set_nice(int nice);
 
 스케줄러에는 64개의 우선순위가 있으며, 따라서 0(`PRI_MIN`)부터 63(`PRI_MAX`)까지 64개의 ready queue가 번호가 매겨져 있다. 스레드 우선순위는 **스레드 초기화 시 처음에 계산된다. 또한 모든 스레드에 대해 4 tick마다 한 번씩 다시 계산 된다. 두 경우 모두 공식에 의해 결정된다.**
 
-> $priority = PRI\_MAX - (recent\_cpu / 4) -(nice*2)$
+> $priority = PRI\\_MAX - (recent\\_cpu / 4) -(nice*2)$
 > 
 
 여기서 `recent_cpu`는 **스레드가 최근에 사용한 CPU 시간의 추정치**이고, `nice`는 스레드의 nice 값이다.
@@ -1095,8 +1095,7 @@ $k>0$은 감쇠 속도(rate of decay)를 제어한다.
 > $x(1)=f(1),$   
 > $x(2)=af(1)+f(2)$   
 > $...$   
-> $x(5)=a^4*f(1)+a^3*f(2)+a^2*f(3)+a^1*f(4)+a^0*f(5)$   
-
+> $x(5)=a^4 * f(1) + a^3 * f(2) + a^2 * f(3) + a^1 * f(4) + a^0 * f(5)$
 
 $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a$, 시간 $t+2$에서 가중치 $a^2$ 등을 갖는다.
 
@@ -1112,19 +1111,17 @@ $f(t)$의 값은 시간 $t$에서 가중치 $1$, 시간 $t+1$에서 가중치 $a
 
 또한 초당 한 번씩 이 공식을 사용하여 모든 스레드(RUNNING, READY, BLOCKED)에 대해 `recent_cpu` 값이 다시 계산된다.
 
-> $recent\_cpu=(2*load\_avg)/(2*load\_avg+1)*recent\_cpu+nice$
 
-> $decay=(2*load\_avg)/(2*load\_avg+1)$   
-> $recent\_cpu=decay*recent\_cpu$   
-> $recent\_cpu=recent\_cpu+nice$   
-> → $recent\_cpu=decay*recent\_cpu+nice$   
-> 
+> $recent\\_cpu=(2 * load\\_avg)/(2 * load\\_avg+1) * recent\\_cpu+nice$   
+> $decay=(2 * load\\_avg)/(2 * load\\_avg+1)$   
+> $recent\\_cpu=decay*recent\\_cpu$   
+> $recent\\_cpu=recent\\_cpu+nice$   
+> → $recent\\_cpu=decay * recent\\_cpu+nice$    
 
 여기서 `load_avg`는 실행할 준비가 된 스레드 수의 이동 평균이다.
 
-만약 `load_avg`가 1이라면 평균적으로 단일 스레드가 CPU를 사용함을 나타내며, `recent_cpu`의 현재 값이 0.1의 가중치로 감소하는 데는 `log_(2/3) .1 $\approx$ 6`가 걸리고, `load_avg`가 2이면 0.1의 가중치로 감소하는 데 `log_(3/4) .1 $\approx$ 8`초가 걸린다. 
+만약 `load_avg`가 1이라면 평균적으로 단일 스레드가 CPU를 사용함을 나타내며, `recent_cpu`의 현재 값이 0.1의 가중치로 감소하는 데는 log_(2/3) .1 $\approx$ 6가 걸리고, `load_avg`가 2이면 0.1의 가중치로 감소하는 데 log_(3/4) .1 $\approx$ 8초가 걸린다. 
 
- If `load_avg` is 1, indicating that a single thread, on average, is competing for the CPU, then the current value of recent cpu decays to a weight of `.1` in `log_(2/3) .1 ≈ 6` seconds; if load avg is 2, then decay to a weight of `.1` takes `log_(3/4) .1 ≈ 8` seconds. 
 
 그 결과 최근 CPU는 스레드가 “최근” 받은 CPU 시간을 추정하며, 감쇠 속도는 CPU를 두고 경쟁하는 스레드 수에 반비례한다.
 
@@ -1154,8 +1151,7 @@ int thread_get_recent_cpu(void);
 
 **시스템 부팅 시 0으로 초기화되며, 그 후 초당 한 번씩 다음 공식에 따라 업데이트**된다.
 
-> $load\_avg=(59/60)*load\_avg+(1/60)*ready\_threads$
-> 
+> $load\\_avg=(59/60) * load\\_avg+(1/60) * ready\\_threads$
 
 여기서 `ready_threads`는 **업데이트 시점에 실행 중이거나 실행할 준비가 된 스레드의 수**이다. (Idle 스레드 제외)
 
