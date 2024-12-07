@@ -2,8 +2,8 @@
 title: "동적 메모리 할당 & 해제 (new & delete)"
 writer: Langerak
 date: 2024-10-12 12:00:00 +0800
-categories: [Programming Language, C++]
-tags: [C++, Memory]
+categories: [Programming Language, Cpp]
+tags: [Cpp, Memory]
 pin: false
 math: true
 mermaid: true
