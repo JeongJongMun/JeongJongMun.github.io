@@ -67,7 +67,7 @@ Github Action을 사용하여 유니티 빌드 자동화를 쉽게 구축할 수
 
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/9b1da453-7bad-4356-89ed-81c4de07de64){: width="500" height="500" .center}
 
-```yaml
+```plaintext
 name: Automated Build
 
 on:
