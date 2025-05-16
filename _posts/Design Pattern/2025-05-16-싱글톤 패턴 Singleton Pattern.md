@@ -2,8 +2,8 @@
 title: "싱글톤 패턴 Singleton Pattern"
 writer: Langerak
 date: 2025-05-16 12:00:00 +0800
-categories: [`Design Pattern`]
-tags: [싱글톤 패턴 Singleton Pattern]
+categories: [Design Pattern]
+tags: [Design Pattern]
 pin: false
 math: true
 mermaid: true
