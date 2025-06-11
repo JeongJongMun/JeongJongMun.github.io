@@ -2,8 +2,8 @@
 title: "Context Switching, PCB, Interrupt"
 writer: Langerak
 date: 2024-03-02 12:00:00 +0800
-categories: [Computer Science, Operating System]
-tags: [Computer Science, Operating System]
+categories: [Operating System]
+tags: [Operating System]
 pin: false
 math: true
 mermaid: true

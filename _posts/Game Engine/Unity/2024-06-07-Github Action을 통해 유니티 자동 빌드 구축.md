@@ -2,8 +2,8 @@
 title: "Github Action을 통해 유니티 자동 빌드 구축"
 writer: Langerak
 date: 2024-06-7 12:00:00 +0800
-categories: [Game Engine, Unity]
-tags: [Game Engine, Unity]
+categories: [Unity]
+tags: [Unity]
 pin: false
 math: true
 mermaid: true

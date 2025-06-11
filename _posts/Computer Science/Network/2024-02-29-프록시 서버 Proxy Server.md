@@ -2,8 +2,8 @@
 title: "프록시 서버 Proxy Server"
 writer: Langerak
 date: 2024-02-29 12:00:00 +0800
-categories: [Computer Science, Network]
-tags: [Computer Science, Network]
+categories: [Network]
+tags: [Network]
 pin: false
 math: true
 mermaid: true

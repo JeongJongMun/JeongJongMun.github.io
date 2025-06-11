@@ -2,8 +2,8 @@
 title: "대리자 delegate, Func, Action와 event"
 writer: Langerak
 date: 2024-11-8 12:00:00 +0800
-categories: [Programming Language, CSharp]
-tags: [Programming Language, CSharp]
+categories: [Programming Language]
+tags: [Programming Language]
 pin: false
 math: true
 mermaid: true

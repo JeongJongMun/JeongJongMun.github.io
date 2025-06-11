@@ -2,8 +2,8 @@
 title: "Namespace, Module, Package, Library, Framework"
 writer: Langerak
 date: 2024-03-05 12:00:00 +0800
-categories: [Programming Language, Python]
-tags: [Programming Language, Python]
+categories: [Programming Language]
+tags: [Programming Language]
 pin: false
 math: true
 mermaid: true

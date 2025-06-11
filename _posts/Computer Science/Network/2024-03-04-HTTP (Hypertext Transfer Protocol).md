@@ -2,8 +2,8 @@
 title: "HTTP: Hypertext Transfer Protocol"
 writer: Langerak
 date: 2024-03-04 12:00:00 +0800
-categories: [Computer Science, Network]
-tags: [Computer Science, Network]
+categories: [Network]
+tags: [Network]
 pin: false
 math: true
 mermaid: true

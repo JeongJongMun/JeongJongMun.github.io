@@ -2,8 +2,8 @@
 title: "최장 증가 부분 수열 Longest Increasing Subsequence (LIS)"
 writer: Langerak
 date: 2024-12-20 12:00:00 +0800
-categories: [Algorithm, Dynamic Programming]
-tags: [Algorithm, Dynamic Programming]
+categories: [Algorithm]
+tags: [Algorithm]
 pin: false
 math: true
 mermaid: true

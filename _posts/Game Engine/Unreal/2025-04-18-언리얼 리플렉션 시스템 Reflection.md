@@ -2,8 +2,8 @@
 title: "언리얼 리플렉션 시스템 Reflection"
 writer: Langerak
 date: 2025-04-18 12:00:00 +0800
-categories: [Game Engine, Unreal]
-tags: [Game Engine, Unreal]
+categories: [Unreal]
+tags: [Unreal]
 pin: false
 math: true
 mermaid: true

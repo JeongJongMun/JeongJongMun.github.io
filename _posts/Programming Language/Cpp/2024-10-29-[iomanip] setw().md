@@ -2,8 +2,8 @@
 title: "<iomanip> setw()"
 writer: Langerak
 date: 2024-10-29 12:00:00 +0800
-categories: [Programming Language, Cpp]
-tags: [Cpp]
+categories: [Programming Language]
+tags: [Programming Language]
 pin: false
 math: true
 mermaid: true

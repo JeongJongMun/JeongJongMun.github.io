@@ -2,8 +2,8 @@
 title: "[크래프톤 정글 4주차] Red-Black Tree"
 writer: Langerak
 date: 2024-02-08 20:50:00 +0800
-categories: [KraftonJungle4th, WIL]
-tags: [KraftonJungle4th, WIL]
+categories: [WIL]
+tags: [WIL]
 pin: false
 math: true
 mermaid: true
