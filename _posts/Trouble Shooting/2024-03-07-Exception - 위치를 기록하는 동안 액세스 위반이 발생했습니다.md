@@ -2,8 +2,8 @@
 title: "Exception: 위치를 기록하는 동안 액세스 위반이 발생했습니다. (0 < nx ≤ n)"
 writer: Langerak
 date: 2024-03-07 12:00:00 +0800
-categories: [Trouble Shooting, Cpp]
-tags: [Trouble Shooting, Cpp]
+categories: [Trouble Shooting]
+tags: [Trouble Shooting]
 pin: false
 math: true
 mermaid: true

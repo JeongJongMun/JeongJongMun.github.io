@@ -2,8 +2,8 @@
 title: "PowerShell: Set-Location: A positional parameter cannot be found that accepts argument '-'"
 writer: Langerak
 date: 2024-02-20 12:00:00 +0800
-categories: [Trouble Shooting, PowerShell]
-tags: [Trouble Shooting, PowerShell]
+categories: [Trouble Shooting]
+tags: [Trouble Shooting]
 pin: false
 math: true
 mermaid: true
