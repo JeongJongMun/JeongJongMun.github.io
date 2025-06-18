@@ -8,7 +8,7 @@ pin: false
 math: true
 mermaid: true
 image:
-  path: https://github.com/user-attachments/assets/27fc2f50-2315-4b3a-9e73-e537aa1a782f
+  path: https://1drv.ms/i/c/0feb846c92fbe54a/IQS6mnwQAOfaRI_weqt3dPBOAQllTEdQXyWvOUjL6HV8vOI?width=1920&height=1080
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: Dynamic Programming
 ---
