@@ -8,7 +8,7 @@ pin: false
 math: true
 mermaid: true
 image:
-  path: https://github.com/user-attachments/assets/bfd2f47b-3b5a-44f7-897c-b440ff031145
+  path: https://1drv.ms/i/c/0feb846c92fbe54a/IQQ3z3L6GNd0RJ1zh52gfwlpAX0jHvZ7xFa1K-MBlodskbA?width=1920&height=1080
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: LinkedList
 ---
