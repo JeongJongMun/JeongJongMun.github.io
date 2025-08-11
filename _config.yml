@@ -119,9 +119,9 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: JeongJongMun/JeongJongMun.github.io
-    repo_id: R_kgDOLQbmXQ
+    repo_id: R_kgDOPb72EA
     category: Announcements
-    category_id: DIC_kwDOLQbmXc4CdRV9
+    category_id: DIC_kwDOPb72EM4CuCyv
     mapping: title # optional, default to 'pathname'
     input_position: top # optional, default to 'bottom'
     lang: ko # optional, default to the value of `site.lang`
