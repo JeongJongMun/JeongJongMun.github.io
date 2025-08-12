@@ -2,7 +2,7 @@
 title: "완전 공정 스케줄러(Completely Fair Scheduler, CFS)"
 writer: Langerak
 date: 2025-07-09 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

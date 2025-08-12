@@ -2,7 +2,7 @@
 title: "근거리 통신망 Local Area Network, LAN"
 writer: Langerak
 date: 2024-02-25 12:00:00 +0800
-categories: [Network]
+categories: [Computer Science, Network]
 tags: [Network]
 pin: false
 math: true

@@ -2,7 +2,7 @@
 title: "Demand-Zero Memory"
 writer: Langerak
 date: 2024-02-24 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

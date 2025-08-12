@@ -2,7 +2,7 @@
 title: "시스템 콜 System Call"
 writer: Langerak
 date: 2024-02-14 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

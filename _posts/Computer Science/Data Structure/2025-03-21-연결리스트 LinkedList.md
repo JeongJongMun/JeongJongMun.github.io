@@ -2,7 +2,7 @@
 title: "연결리스트 LinkedList"
 writer: Langerak
 date: 2025-03-21 13:00:00 +0800
-categories: [Data Structure]
+categories: [Computer Science, Data Structure]
 tags: [Data Structure]
 pin: false
 math: true

@@ -2,7 +2,7 @@
 title: "위상 정렬 Topological Sorting"
 writer: Langerak
 date: 2024-03-06 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true

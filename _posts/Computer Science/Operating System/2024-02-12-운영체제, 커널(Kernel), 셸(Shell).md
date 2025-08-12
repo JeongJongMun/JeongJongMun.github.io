@@ -2,7 +2,7 @@
 title: "운영체제, 커널(Kernel), 셸(Shell)"
 writer: Langerak
 date: 2024-02-12 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

@@ -2,7 +2,7 @@
 title: "파일 디스크립터 File Descriptor"
 writer: Langerak
 date: 2024-03-03 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

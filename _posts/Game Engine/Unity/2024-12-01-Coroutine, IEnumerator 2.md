@@ -2,7 +2,7 @@
 title: "Coroutine, IEnumerator 2"
 writer: Langerak
 date: 2024-12-01 13:00:00 +0800
-categories: [Unity]
+categories: [Game Engine, Unity]
 tags: [Unity]
 pin: false
 math: true

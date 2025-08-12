@@ -2,7 +2,7 @@
 title: "메모리 단편화 Memory Fragmentation"
 writer: Langerak
 date: 2024-02-18 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

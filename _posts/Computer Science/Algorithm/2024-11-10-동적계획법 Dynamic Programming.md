@@ -2,7 +2,7 @@
 title: "동적계획법 Dynamic Programming"
 writer: Langerak
 date: 2024-11-10 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true

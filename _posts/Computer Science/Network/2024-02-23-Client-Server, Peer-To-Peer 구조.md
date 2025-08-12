@@ -2,7 +2,7 @@
 title: "Client-Server / Peer-To-Peer 구조"
 writer: Langerak
 date: 2024-02-23 12:00:00 +0800
-categories: [Network]
+categories: [Computer Science, Network]
 tags: [Network]
 pin: false
 math: true

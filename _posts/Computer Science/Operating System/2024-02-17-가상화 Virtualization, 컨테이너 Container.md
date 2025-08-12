@@ -2,7 +2,7 @@
 title: "가상화 Virtualization, 컨테이너 Container"
 writer: Langerak
 date: 2024-02-17 12:00:00 +0800
-categories: [Operating System]
+categories: [Computer Science, Operating System]
 tags: [Operating System]
 pin: false
 math: true

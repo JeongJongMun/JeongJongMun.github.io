@@ -2,7 +2,7 @@
 title: "최장 증가 부분 수열 Longest Increasing Subsequence (LIS)"
 writer: Langerak
 date: 2024-12-20 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true
