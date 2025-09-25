@@ -137,6 +137,101 @@ OOP는 사람의 사고 방식과 닮았기 때문에 더 쉽게 이해할 수 �
 
 <br/>
 
+### 메모리 캐싱과 명령어의 레이턴시
+
+---
+[https://tsyang.tistory.com/68](https://tsyang.tistory.com/68)에서 잘 설명되어 있다.
+
+[https://www.agner.org/optimize/instruction_tables.pdf](https://www.agner.org/optimize/instruction_tables.pdf)
+
+위 문서를 보면 제곱근을 구하는 명령어 SQRT의 레이턴시는 약 15 사이클, 삼각함수의 경우에는 100~300 사이클을 왔다갔다 한다고 한다.
+
+![img](assets/img/inpost/48.png)
+
+메모리에 접근하는 속도는 하드웨어마다 다르겠지만 L1 캐시는 3 사이클, L2~3 캐시는 10~30 사이클, 메모리는 200 사이클+가 필요하다고 해보자
+
+```c++
+class APlayer : public AActor
+{
+    FVector Velocity = FVector::ZeroVector;
+    float Foo = 0.0f;
+    
+    virtual void Tick(float DeltaTime) override
+    {
+        Super::Tick(DeltaTime);
+
+        UpdateFoo(DeltaTime);
+    }
+    
+    void UpdateFoo(float DeltaTime)
+    {
+        const float Speed = Velocity.Size2D();
+        Foo += Speed * DeltaTime;
+    }
+};
+```
+
+먼저 FVector::Size2D()는 내부적으로 sqrt(X*X + Y*Y)를 계산한다.
+
+```c++
+template<typename T>
+FORCEINLINE T TVector<T>::Size2D() const
+{
+    return FMath::Sqrt(X*X + Y*Y);
+}
+```
+
+위와 같은 간단한 플레이어 클래스가 있고, UpdateFoo() 함수를 보면 제곱근을 구하는 Size2D() (= Sqrt)가 성능에서 가장 중요한 부분이라고 생각할 수 있다.
+
+UpdateFoo()에서 Sqrt와 곱셈 덧셈 연산을 다 합쳐도 40 사이클 정도의 레이턴시가 발생할 것이다.
+
+하지만 Velocity라는 변수가 메모리 어디에 위치하는지에 따라, 즉 캐시 히트가 발생하는지에 여부에 따라 성능이 크게 달라질 수 있다.
+
+만약 Velocity를 가져오는데 메모리 접근이 필요하다면 200 사이클+가 추가로 필요하다.
+Foo 변수를 읽어와 값을 쓰는데도 200 사이클+가 추가로 필요하다.
+
+그러니까 수학 연산하는데 40 사이클 정도 필요한데, 메모리에서 값을 읽어와 쓰는 데에 400 사이클이나 필요할 수 있다.
+즉, 수학 연산하는데 드는 시간은 전체 계산 시간의 10% 밖에 안되는 셈이다.
+
+또한 일반적으로 메모리와 L1, L2 캐시에서 값을 불러오는 단위인 캐시 라인은 64바이트인데, FVector는 12바이트, float는 4바이트이다.
+Velocity와 Foo는 각각 52, 60 바이트를 낭비하는 셈이니 꽉꽉 채워 사용하면 효율적이게 된다.
+
+이를 데이터 지향 설계로 수정해보면 아래와 같이 될 것이다.
+
+```c++
+struct FPlayerDataCollection
+{
+    TArray<FVector> AllVelocities;
+    TArray<float> AllFoos;
+};
+
+class PlayerSystem
+{
+public:
+    static void UpdateAllFoos(FPlayerDataCollection& Data, float DeltaTime)
+    {
+        for (int32 i = 0; i < Data.AllVelocities.Num(); ++i)
+        {
+            const float Speed = Data.AllVelocities[i].Size2D();
+            Data.AllFoos[i] += Speed * DeltaTime;
+        }
+    }
+};
+```
+
+위 코드처럼 여러 개의 플레이어를 함께 업데이트해주면 어떨까?
+
+예를 들어 32개의 플레이어가 있다면 Velocity를 이용해 Foo를 업데이트한다.
+32개의 플레이어가 각각 2번씩 캐시라인을 사용하기에 다 합치면 64개의 캐시라인이 사용된다.
+
+새로운 방법은 32개의 Velocity = 32 * 12 = 384 바이트니까 6개의 캐시라인
+32개의 Foo = 32 * 4 = 128 바이트니까 2개의 캐시라인을 사용한다.
+
+캐시라인만 봐도 기존 방법은 64 * 200 = 12800 사이클이 필요하지만, 새로운 방법은 8 * 200 = 1600 사이클이 필요하다.
+8배가 차이가 난다.
+
+
 _참고_
 
 - [https://yozm.wishket.com/magazine/detail/2157/](https://yozm.wishket.com/magazine/detail/2157/)
+- [https://tsyang.tistory.com/68](https://tsyang.tistory.com/68)
