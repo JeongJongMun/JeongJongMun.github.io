@@ -2,8 +2,8 @@
 title: "성능을 높히는 데이터 지향 설계 (Data Oriented Design, DOD)"
 writer: Langerak
 date: 2025-9-9 12:00:00 +0800
-categories: [Game Engine]
-tags: [Game Engine]
+categories: [Game Engine, Unreal]
+tags: [Game Engine, Unreal]
 pin: false
 math: true
 mermaid: true
