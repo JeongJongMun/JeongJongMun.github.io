@@ -1,7 +1,7 @@
 ---
 title: "너비 우선 탐색 Depth First Search(DFS)"
 writer: Langerak
-date: 2025-11-07 12:00:00 +0800
+date: 2025-11-08 12:00:00 +0800
 categories: [Algorithm]
 tags: [Algorithm]
 pin: false
