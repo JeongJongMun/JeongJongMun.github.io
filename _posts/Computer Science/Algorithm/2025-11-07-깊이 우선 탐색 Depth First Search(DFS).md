@@ -1,5 +1,5 @@
 ---
-title: "깊이 우선 탐색(DFS, Depth First Search)"
+title: "깊이 우선 탐색 Depth First Search(DFS)"
 writer: Langerak
 date: 2025-11-07 12:00:00 +0800
 categories: [Algorithm]
@@ -52,8 +52,8 @@ mermaid: true
 
 ---
 
-- **인접 행렬 :** $O(v^2)$
-- **인접 리스트 :** $O(v+e)$
+- 인접 행렬 : $O(n^2)$
+- 인접 리스트 : $O(n+e)$
 
 <br/>
 
