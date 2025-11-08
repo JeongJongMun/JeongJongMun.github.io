@@ -38,7 +38,7 @@ mermaid: true
 
 ---
 
-![img](assets/img/inpost/101.png)
+![img](assets/img/inpost/102.png)
 
 1. 탐색을 시작할 노드를 방문하고, 스택에 넣은 후 방문했음을 표시한다.
 2. 스택의 최상단 노드에서 방문하지 않은 인접 노드 중 하나를 선택한다.
