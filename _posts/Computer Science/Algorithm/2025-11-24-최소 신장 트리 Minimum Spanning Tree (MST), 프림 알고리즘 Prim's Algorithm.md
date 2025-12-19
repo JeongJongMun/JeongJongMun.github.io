@@ -2,7 +2,7 @@
 title: "최소 신장 트리 Minimum Spanning Tree (MST), 프림 알고리즘 Prim's Algorithm"
 writer: Langerak
 date: 2025-11-24 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true

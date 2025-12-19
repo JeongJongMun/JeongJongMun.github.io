@@ -2,7 +2,7 @@
 title: "플로이드 워셜 Floyd Warshall"
 writer: Langerak
 date: 2025-11-18 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true
