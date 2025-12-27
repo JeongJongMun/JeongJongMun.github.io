@@ -1,16 +1,12 @@
 ---
-title: "Project1 - Threads"
+title: "[PintOS] Project1 - Threads"
 writer: Langerak
 date: 2024-06-6 12:00:00 +0800
-categories: [Pintos]
-tags: [Pintos]
+categories: [Krafton Jungle]
+tags: [Krafton Jungle]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/f64d8095-b650-4ef1-90b2-3be0a697d33d
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Unity
 ---
 
 > 본 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있다면 언제든지 피드백을 주시면 감사하겠습니다. 참고로만 활용해주시길 바랍니다.
@@ -351,10 +347,10 @@ void timer_sleep (int64_t ticks);
 
 ### Solution
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/036ce12d-5134-4bb2-90ff-1028fce87a1b)
+![img](assets/img/inpost/126.png)
 _Busy Waiting 상태_
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/cfec789b-e5f9-4e11-8bbb-9cd565c7160e)
+![img](assets/img/inpost/127.png)
 _수정된 Non Busy Waiting 상태_
 
 `timer_alarm(int ticks)` 는 `ticks` 시간 뒤에 프로세스를 깨우는 시스템 콜이다.
@@ -401,7 +397,7 @@ _수정된 Non Busy Waiting 상태_
 
 **결과**
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/5cda0d0a-f975-4388-8603-5fc42c8133e8)
+![img](assets/img/inpost/128.png)
 
 기존 Busy Waiting 시에는 Idle ticks가 0이었는데, Non Busy Waiting 방식으로 개선하니 Idle ticks가 많이 오른 것을 볼 수 있다.
 
@@ -563,11 +559,11 @@ bool less_wakeup_ticks(const struct list_elem *a, const struct list_elem *b, voi
 우선순위 기부을 구현하기 위해서는 우선순위 기부가 필요한 다양한 상황을 모두 고려해야 한다. 
 
 1. 하나의 스레드에 여러 개의 우선순위가 기부되는 **다중 기부(Multiple Donation)** 를 처리해야 한다.
-    
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/65b9a602-c5d6-4cc0-a22a-345360e8c262)
+
+    ![img](assets/img/inpost/129.png)
     _다중 기부 예시 1_
-    
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/be71fd49-d4cc-44c3-9e66-ff740f96952d)    
+
+    ![img](assets/img/inpost/130.png)
     _다중 기부 예시 2_
     
     t1의 우선순위는 1, t2의 우선순위는 2, t3와 t4도 마찬가지라고 하자.
@@ -578,10 +574,10 @@ bool less_wakeup_ticks(const struct list_elem *a, const struct list_elem *b, voi
     
 2. **중첩 기부(Nested Donation)** 를 처리해야 한다. 
     
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/5baaf45f-fcf9-4c5d-b55a-711a4cf48755)    
+    ![img](assets/img/inpost/131.png)
     _중첩 기부 예시 1_
     
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/7495e0a5-472c-4b06-85bc-690b69dccf35)    
+    ![img](assets/img/inpost/132.png)
     _중첩 기부 예시 2_
     
     t1이 잠금 A를 보유하고 있고, t2가 잠금 B를 보유한 상태에서 잠금 A를 기다리고 있다.
@@ -670,10 +666,9 @@ pintos는 현재 선입선출(FIFO) 스케줄링을 사용하므로, **우선순
 8. 스레드 초기화 시에 스레드 구조체에 새로 추가된 필드들을 초기화 해주어야 한다. 특히 리스트를 잊지 말자.
 9. 스레드가 세마포어를 포기하고, `waiters` 리스트에서 BLOCKED 된 스레드를 UNBLOCK 해줄 때, `waiters` 리스트를 정렬해주어야 한다.
     
+    ![img](assets/img/inpost/133.png)
     
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/e10dfa31-8387-4cc6-bd5b-82007d2a4979){: width="500" height="500" .center}
-    
-    ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/ad933fc3-e94a-4694-bfb7-4b4149964be8){: width="500" height="500" .center}
+    ![img](assets/img/inpost/134.png)
     
     위 그림과 같이 예시를 들어보자.
     
@@ -1532,12 +1527,15 @@ void lock_release (struct lock *lock) {
 }
 ```
 
+<br/>
+
 ## Result
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/d3b91f77-dfe0-47af-8a5b-e52e7733bd32)
+![img](assets/img/inpost/135.png)
 
+<br/>
 
 _참고_
 
