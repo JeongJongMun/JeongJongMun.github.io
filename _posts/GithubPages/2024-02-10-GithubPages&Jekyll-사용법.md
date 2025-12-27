@@ -2,8 +2,8 @@
 title: "윈도우에서 GitHub Pages와 Jekyll로 블로그 만들기"
 writer: Langerak
 date: 2024-02-10 11:33:00 +0800
-categories: [GitHub Pages]
-tags: [GitHub Pages]
+categories: [개발 일지]
+tags: [개발 일지]
 pin: false
 math: true
 mermaid: true
