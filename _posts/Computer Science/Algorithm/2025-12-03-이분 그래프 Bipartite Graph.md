@@ -2,7 +2,7 @@
 title: "이분 그래프 Bipartite Graph"
 writer: Langerak
 date: 2025-12-03 12:00:00 +0800
-categories: [Algorithm]
+categories: [Computer Science, Algorithm]
 tags: [Algorithm]
 pin: false
 math: true

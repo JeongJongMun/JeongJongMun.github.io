@@ -26,7 +26,7 @@ mermaid: true
 
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/8bf295c6-7caa-496f-9d1c-93f9254632a5){: width="500" height="500" .center} 
 _위 체크박스가 보이면 모두 체크 후 진행_
-
+분
 ![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/353c9fbb-d21b-4cb9-b0d5-fce66be95be6){: width="500" height="500" .center}
 _설치 완료후 위 화면에서 1 + Enter_
 
