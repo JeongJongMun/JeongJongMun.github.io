@@ -2,15 +2,11 @@
 title: "[크래프톤 정글 4주차] Red-Black Tree"
 writer: Langerak
 date: 2024-02-08 20:50:00 +0800
-categories: [WIL]
-tags: [WIL]
+categories: [Krafton Jungle]
+tags: [Krafton Jungle]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/606fb575-ffce-4656-b694-4e14f54f2654
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: KraftonJungle
 ---
 
 ## 주간 요약
