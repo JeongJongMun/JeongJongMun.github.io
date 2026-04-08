@@ -1,5 +1,5 @@
 ---
-title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [1/2]"
+title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [1/4]"
 writer: Langerak
 date: 2026-03-18 12:00:00 +0800
 categories: [Programming Language]
