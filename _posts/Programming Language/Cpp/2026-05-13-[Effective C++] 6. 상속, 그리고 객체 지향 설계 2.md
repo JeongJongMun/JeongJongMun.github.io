@@ -9,7 +9,7 @@ tags: [Programming Language]
 pin: false
 math: true
 mermaid: true
-published: false
+published: true
 ---
 
 ### 항목 34 : 인터페이스 상속과 구현 상속의 차이를 제대로 파악하고 구별하자
