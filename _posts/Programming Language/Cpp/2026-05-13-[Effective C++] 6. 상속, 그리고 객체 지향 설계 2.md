@@ -429,27 +429,371 @@ public:
 
 ---
 
+우리가 게임 개발팀에서 일하고 있다고 생각해 보자.
+맡은 일은 게임에 등장하는 각종 캐릭터를 클래스로 설계하는 작업이다.
+여러 적들이 달려들어 싸우는 게임이다 보니, 캐릭터가 다치거나 체력이 깎이는 경우가 많을 것이다.
+그래서 healthValue라는 이름의 멤버 함수를 제공하기로 정한다.
+이 함수는 이름 그대로 캐릭터의 체력이 얼마나 남았는지를 나타내는 정수 값을 반환한다.
+체력이 어떻게 계산하는지는 캐릭터마다 다를 것이 뻔하므로, 이 함수를 가상 함수로 선언하는 것이 확실한 설계일 것 같다.
 
+```c++
+class GameCharacter
+{
+public:
+    virtual int healthValue() const;
+    ...
+};
+```
 
+healthValue 함수가 순수 가상 함수로 선언되지 않은 것을 보아, 체력치를 계산하는 기본 알고리즘이 제공된다는 사실을 알 수 있다(항목 34 참조).
 
+누가 뭐라 할 것도 없는, 너무나 당연한 설계이다. 이와 동시에, 또 어떤 의미로는 이것이 약점이다.
+당연 그 자체의 설계이기 때문에, 이것 말고 적당한 다른 방법을 떠올리는 것도 잘 안 된다.
+재미있어야 할 객체 지향 설계의 여정에서 뭔가 판에 박힌 건 아닌가 하며 우울해 할 우리를 구원하기 위해, 필자가 두 팔 다 걷었다.
+다른 방법이 없는지 생각해 보자.
 
+<br/>
 
+**비가상 인터페이스 관용구를 통한 템플릿 메서드 패턴**
 
+이번 이야기는 "가상 함수는 반드시 private 멤버로 두어야 한다"고 주장하는 소위 '가상 함수 은폐론'으로 시작하려고 한다.
+이 이론을 따르는 사람들이 제안하는 더 괜찮은 설계는, healthValue를 public 멤버 함수로 그대로 두되 비가상 함수로 선언하고,
+내부적으로는 실제 동작을 맡은 private 가상 함수를 호출하는 식으로 만드는 것이다.
+가상 함수 이름은 doHealthValue 정도가 적당할 것이다.
 
+```c++
+class GameCharacter
+{
+public:
+    int healthValue() const
+    {
+        ... // 사전 동작 수행
+        int retVal = doHealthValue(); // 실제 동작 수행
+        ... // 사후 동작 수행
+        return retVal;
+    }
+private:
+    virtual int doHealthValue() const
+    {
+        ... // healthValue의 기본 동작을 구현
+    }
+};
+```
+코드를 보면 알겠지만, 멤버 함수의 본문이 클래스 정의 안에 들어가 있다.
+항목 30에서 이야기했듯, 이렇게 하면 암시적으로 인라인 함수로 선언된다.
+필자가 코드를 이렇게 나타낸 이유는 진행 상황을 보기 쉽게 하기 위해서이다.
+지금부터 보여주는 설계는 인라인 함수하고는 하등 관계가 없으니 오해하지 말자.
 
+여기까지가 기본 설계이다.
+사용자로 하여금 public 비가상 멤버 함수를 통해 private 가상 함수를 간접적으로 호출하게 만드는 방법으로,
+**비가상 함수 인터페이스(non-virtual interface, NVI) 관용구**라고 많이 알려져 있다.
+사실 이 관용구는 템플릿 메서드(C++ 템플릿하고는 아무 관계가 없는 패턴 이름이다)라 불리는 고전 디자인 패턴을 C++ 식으로 구현한 것이다.
+필자의 경우엔 이 관용구에 쓰이는 비가상 함수를 가상 함수의 랩퍼(wrapper)라고 부른다.
 
+NVI 관용구의 이점은 필자가 위의 코드에 주석문으로 써둔 "사전 동작" 및 "사후 동작"에 전부 다 들어 있다.
+글자 그대로, 주석문이 가리키는 부분은 실제 동작을 수행하는 가상 함수를 호출하기 전과 호출한 후에 호출될 코드들이 들어갈 자리이다.
+다시 말해, 가상 함수가 호출되기 전에 어떤 상태를 구성하고 가상 함수가 호출된 후에 그 상태를 없애는 작업이 랩퍼를 통해 공간적으로 보장된다는 뜻이다.
+예는 아주 많이 들 수 있다.
+뮤텍스 잠근을 건다든지, 로그 정보를 만든다든지, 클래스의 불변속성과 함수의 사전조건이 만족되었나를 검증하는 작업 등이 "사전" 동작에 들어갈 수 있다.
+"사후" 동작으로는 뮤텍스 잠금을 푼다드지, 함수의 사후조건을 점검하고 클래스의 불변속성을 재검증하는 작업 등을 들 수 있다.
+만약 사용자 쪽에서 가상 함수를 직접 호출하도록 놔두었다면, 지금처럼 사전/사후 동작을 끼워 넣을 좋은 방법이 있어 줄 리가 없었을 것이다.
 
+그러고 보니, NVI 관용구를 쓰면 private 가상 함수를 파생 클래스에서 재정의하겠구나, 이런 생각이 들 것이다.
+이 함수는 재정의해 놓고 호출할 수도 없는데 말이다.
+하지만 여기에 설계상의 모순이 있는 것은 아니다.
+가상 함수를 재정의하는 일은 어떤 동작을 **어떻게** 구현할 것인가를 지정하는 것이고,
+가상 함수를 호출하는 일은 그 동작이 수행될 **시점**을 지정하는 것이다.
+그러니 이 둘은 관심사 자체가 서로 무관한 것이다.
+NVI 관용구에서는 파생 클래스의 가상 함수 재정의를 허용하기 때문에,
+어떤 기능을 **어떻게** 구현할지를 조정하는 권한은 파생 클래스가 갖게 되지만, 함수를 **언제** 호출할 지를 결정하는 것은 기본 클래스만의 고유 권한이다.
+이 이야기는 처음엔 꽤나 이상하게 들릴 수 있으나, "상속받은 private 가상 함수를 파생 클래스가 재정의할 수 있다"라는 C++의 규칙에는 흠잡을 만한 것이 전혀 없다.
 
+C++에서는 가상 함수의 제어 접근 권한과 오버라이딩 메커니즘은 완전히 독립적으로 작동한다.
+위의 예시에서 healthValue 함수(public 비가상 함수) 내에서 doHealthValue 함수(private 가상 함수)를 호출한다.
+컴파일러는 호출하는 함수(healthValue)가 public인가를 검사하고 통과된다.
+그리고 런타임에서 healthValue 내부에서 doHealthValue를 호출할 때, 가상 함수 테이블을 보니 자식 클래스에서 이 함수를 재정의해 둔 것을 발견한다.
+접근 제한자는 컴파일러가 검사하는 문법일 뿐이므로, 실행 시점에는 자식이 오버라이딩한 함수가 정상적으로 가리켜져 호출된다.
 
+- 접근 제한자 : 컴파일러가 검사
+- 가상 함수 오버라이딩 : 런타임에 가상 함수 테이블을 통해 결정
 
+따져 보면 NVI 관용구에서 가상 함수는 엄격하게 private 멤버일 필요가 없다.
+어떤 클래스 계통의 경우엔, 파생 클래스에서 재정의되는 가상 함수가 기본 클래스의 대응 함수를 호출할 것을 예상하고 설계된 것도 있는데,
+이런 경우에 적법한 함수 호출이 되려면 그 가상 함수가 private 멤버가 아니가 protected 멤버이어야 한다.
+간혹 가상 함수가 심지어 public 멤버이어야 할 때도 있지만(다형성 기본 클래스의 소멸자가 그 예이다. 항목 7 참조),
+여기까지 오면 사실 NVI 관용구를 적용하는 의미가 없어진다.
 
+<br/>
 
+**함수 포인터로 구현한 전략 패턴**
 
+앞에서 보았듯이 NVI 관용구는 public 가상 함수를 대신할 수 있는 꽤 괜찮은 방법이지만, 클래스 설계의 관점에서 보면 눈속임이나 다름없다.
+어쨌든 게임 캐릭터의 체력치를 계산하는 데 가상 함수를 사용하는 것은 여전하니까이다.
+조금 더 극적인 설계 쪽으로 가 본다면, 캐릭터의 체력치를 계산하는 작업은 캐릭터의 타입과 별개로 놓는 편이 맞을 것이다.
+다시 말해, 체력치 계산이 구태여 어떤 캐릭터의 일부일 필요가 없다는 말이다.
+한 예로, 각 캐릭터의 생성자에 체력치 계산용 함수의 포인터를 넘기게 만들고,
+이 함수를 호출해서 실제 계산을 수행하도록 하면 되지 않을까?
 
+```c++
+class GameCharacter;
 
+int defaultHealthCalc(const GameCharacter& gc);
 
+class GameCharacter
+{
+public:
+    typedef int (*HealthCalcFunc)(const GameCharacter&);
+    
+    explicit GameCharacter(HealthCalcFunc hcf = defaultHealthCalc)
+        : healthCalcFunc(hcf)
+        { }
+        
+    int healthValue() const { return healthCalcFunc(*this); }
+    ...
+    
+private:
+    HealthCalcFunc healthCalcFunc;
+};
+```
 
+이 방법은 주변에서 많이들 쓰고 있는 디자인 패턴인 전략 패턴의 단순한 응용 예이다.
+GameCharacter 클래스 계통에 가상 함수를 심는 방법과 비교하면, 꽤 재미있는 융통성을 갖고 있다.
 
+- 같은 캐릭터 타입으로부터 만들어진 객체들도 체력치 계산 함수를 각각 다르게 가질 수 있다. 즉, 이런 게 가능하다는 이야기이다.
+
+  ```c++
+  class EvilBadGuy : public GameCharacter
+  {
+  public:
+      explicit EvilBadGuy(HealthCalcFunc hcf = defaultHealthCalc)
+          : GameCharacter(hcf)
+          { ... }
+      ...
+  };
+  
+  int loseHealthQuickly(const GameCharacter&);
+  int loseHealthSlowly(const GameCharacter&);
+  
+  // 같은 타입인데도 체력치 변화가 다르게 나오는 캐릭터들
+  EvilBadGuy ebg1(loseHealthQuickly);
+  EvilBadGuy ebg2(loseHealthSlowly);
+  ```
+
+- 게임이 실행되는 도중에 특정 캐릭터에 대한 체력치 계산 함수를 바꿀 수 있다. 
+  예를 들어 GameCharacter 클래스에서 setHealthCalculator라는 멤버 함수를 제공하고 있다면
+  이를 통해 현재 쓰이는 체력치 계산 함수의 교체가 가능해 지는 것이다.
+
+하지만, 장점이 있으면 단점도 있는 법이다.
+체력치 계산 함수가 이제 GameCharacter 클래스 계통의 멤버 함수가 아니라는 점은,
+체력치가 계산되는 대상 객체의 비공개 데이터는 이 함수에 접근할 수 없다는 뜻도 된다.
+예를 들어, defaultHealthCalc 함수는 EvilBadGuy 객체의 public 멤버가 아닌 부분을 건드릴 수 없다.
+뭐, 그 캐릭터의 public 인터페이스로 얻은 정보만을 사용해서 캐릭터의 체력치를 계산할 수 있게 되어 있다면 문제가 없겠지만,
+정확한 체력치 계산을 위해서 public 멤버가 아닌 정보를 써야 할 경우에는 문제가 발생한다.
+사실 이 부분은 클래스 내부의 기능을 그 바깥에 있는 동등한 기능으로 대체하려고 하면 언제든 생기는 고민거리이다.
+여기서 끝날 이야기도 아니며, 이번 항목이 끝날 때까지 이어질 것이다.
+왜냐하면 이후에 생각해 볼 다른 설계 방법들이 전부 GameCharacter 계통의 외부에 있는 함수를 사용하고 있기 때문이다.
+
+public 영역에 없는 부분을 비멤버 함수도 접근할 수 있게 하려면 그 클래스의 캡슐화를 약화시키는 방법밖에는 없다는 것이 일반적인 법칙이다.
+이를테면 비멤버 함수를 프렌드로 선언해 놓는다든지, 
+지금처럼 부득이한 이유가 아니면 숨겨 놓는 것이 더 나을지도 모르는 세부 구현사항에 대한 접근자를 public 멤버로 제공하는 일 등이 있겠다.
+함수 포인터를 통해 얻는 이점들이 과연 GameCharacter 클래스의 캡슐화를 떨어뜨리면서 얻는 불이익을 채워 줄지 아닐지는
+우리가 실제로 맡은 설계를 보면서 스스로 판단해야 한다.
+
+<br/>
+
+**`tr1::function`으로 구현한 전략 패턴**
+
+(C++ 11부터는 `std::function`으로 네임스페이스가 바뀌었다. 이후로도 `std::function`라고 부를게요~)
+
+템플릿과 암시적 인터페이스에 대해 어색하지 않은 독자라면 함수 포인터 기반의 방법이 뭔가 꽉 막혀 보일 수 있다.
+"체력치 계산을 왜 꼭 함수가 해야 해? 그냥 함수처럼 **동작하는** 함수 객체를 쓰면 안 되나?"라고 반박하고 싶다.
+혹여 반드시 함수여야 한다면, 어째서 멤버 함수는 안 되느냐는 의문도 나온다.
+반환 값도 그렇다. int로 바꿀 수 있는 임의의 타입이면 충분하겠는데, 왜 꼭 int가 아니면 안 될까?
+
+이런 것 저런 것, 신경 쓰자니 거북한데, 
+std::function 타입의 객체를 써서 기존의 함수 포인터(healthFunc)를 대신하게 만드는 순간 이 모든 것들이 시원하게 사라진다.
+항목 54를 본 사람은 알겠지만 std::function 계열의 객체는 **함수호출성 개체(callable entity)
+(풀어서 말하면 함수 포인터, 함수 객체 혹은 멤버 함수 포인터)를 가질 수 있고,
+이들 개체는 주어진 시점에서 예상되는 시그니처와 호환되는 시그니처를 갖고 있다.
+그럼 이번에는 std::function을 써서 방금 본 클래스 설계를 바꿔보자.
+
+```c++
+class GameCharacter;
+int defaultHealthCalc(const GameCharacter& gc);
+
+class GameCharacter
+{
+public:
+    // HealthCalcFunc는 함수호출성 개체로서, GameCharacter와 호환되는 어떤 것이든 넘겨받아서 호출될 수 있으며,
+    // int와 호환되는 모든 타입의 객체를 반환한다.
+    typedef std::function<int(const GameCharacter&)> HealthCalcFunc;
+    
+    explicit GameCharacter(HealthCalcFunc hcf = defaultHealthCalc)
+        : healthCalcFunc(hcf)
+        { }
+        
+    int healthValue() const { return healthCalcFunc(*this); }
+    ...
+    
+private:
+    HealthCalcFunc healthCalcFunc;
+```
+
+보다시피, HealthCalcFunc는 std::function 템플릿을 인스턴스화한 것에 대한 typedef 타입이다.
+다시 말해 이 타입은 일반화된 함수 포인터 타입처럼 동작한다는 뜻이다.
+그럼, HealthCalcFunc가 원래 어떤 것을 typedef한 것인지 다시 한 번 눈 크게 뜨고 들여다 보자.
+
+```c++
+typedef std::function<int(const GameCharacter&)>
+```
+
+std::function을 인스턴스화하기 위해 매개변수로 쓰인 "대상 시그니처"를 잘 보자(int (const GameCharacter&)).
+이 대상 시그니처를 그대로 읽으면 "const GameCharacter에 대한 참조자를 받고 int를 반환하는 함수"이다.
+이렇게 정의된 std::function 타입으로 만들어진 객체는 앞으로 대상 시그니처와 호환되는 함수호출성 개체를 어떤 것도 가질 수 있다.
+여기서 '호환된다(compatible)'라는 말은, 
+함수 호출성 개체의 매개변수 타입이 const GameCharacter&이거나 const GameCharacter&으로 암시적 변환이 가능한 타입이며,
+반환 타입도 암시적으로 int로 변환될 수 있다는 뜻이다.
+
+바로 앞 소절에서 살펴본 설계(GameCharacter가 함수 포인터를 물게 했던)와 비교하면, 지금 설계도 사실 크게 다른 것은 없다.
+다른 점이 있다면 GameCharacter가 이제는 std::function 객체, 그러니까 좀더 **일반화된** 함수 포인터를 물게 된다는 것이다.
+변했다고 하기에도 미안한 정도라, 정말 살짝 바꾼 설계라고 말할 수 있다.
+하지만 아주 조금 바꾼 덕택에 사용자 쪽에선 체력치 계산 함수를 지정하는 데 있어서 융통성을 누릴 수 있게 되었다.
+
+```c++
+short calcHealth(const GameCharacter&); // 반환 타입이 int가 아닌 부분에 주목
+
+struct HealthCalculator // 체력치 계산용 함수 객체를 만들기 위한 클래스
+{
+    int operator()(const GameCharacter&) const;
+    { ... }
+};
+
+class GameLevel
+{
+public:
+    float healthCalc(const GameCharacter&) const; // 반환 타입이 int가 아닌 부분에 주목
+    ...
+};
+
+class EvilBadGuy : public GameCharacter
+{
+... // 이전과 동일
+};
+
+class EyeCandyCharacter : public GameCharacter
+{
+... // 또 하나의 캐릭터 타입. 생성자는 EvilBadGuy 똑같다고 가정
+};
+
+EvilBadGuy ebg1(calcHealth);
+
+EyeCandyCharacter ecc1(HealthCalculator());
+
+GameLevel currentLevel;
+...
+EvilBadGuy ebg2(std::tr1::bind(&GameLevel::healthCalc, currentLevel, _1));
+```
+
+(std::tr1::bind은 std::bind으로 바뀌었습니다. 이후로도 std::bind라고 부르겠습니다)
+
+강요할 생각은 없지만, 이렇게 멋진 코드를 만들 수 있는 것은 순전히 std::function 템플릿 덕분이다.
+
+위의 정의문이 말하는 바는, ebg2의 체력치를 계산하기 위해 GameLevel 클래스의 health 멤버 함수를 써야 한다는 것이다.
+현재, GameLevel::health 함수는 매개변수 하나를 받는 것으로 선언되어 있지만, 실제로는 두 개를 받는다.
+GameLevel 객체 하나를 암시적으로 받아들이니까 말이다.
+이 객체는 this 포인터가 가리키는 것이다.
+하지만 GameCharacter 객체에 쓰는 체력치 계산 함수가 받는 매개변수는 체력치가 계산되는 GameCharacter 객체, 그것 하나 뿐이다.
+
+만일 ebg2의 체력치 계산에 GameLevel::health 함수를 쓰려고 한다면, 어떻게든 때려 맞추어야 할 것이다.
+매개변수 두 개를 받는 함수를 매개변수 한 개만 받는 함수로 바꿔야 한단 말이다.
+지금의 예제 코드에서는 ebg2의 체력치 계산에 쓸 GameLevel 객체로서 currentLevel만을 쓸 생각이므로,
+우리는 GameLevel::health 함수가 호출될 때마다 currentLevel이 사용되도록 "묶어"준 것이다.
+std::bind는 바로 이 묶기 작업을 맡았다.
+다시 말해, ebg2의 체력치 계산 함수는 항상 currentLevel만을 GameLevel 객체로 쓴다고 지정한 것이다.
+
+쉽게 설명하기 힘든 세부사항이 많이 남았긴 했지만 넘어가야 한다.
+"_1"은 "ebg2에 대해 currentLevel과 묶인 GameLevel::health 함수를 호출할 때 넘기는 첫 번째 자리의 매개변수"를 뜻한다는 점도 이런 세부사항들 중 하나이다.
+어쨌든 우리는 함수 포인터 대신에 std::function을 사용함으로써, 사용자가 게임 캐릭터의 체력치를 계산할 때,
+**시그니처가 호환되는 함수호출성 개체**는 어떤 것도 원하는 대로 구사할 수 있도록 융통성을 활짝 열어 줬다는 것이다.
+이거면 훌륭하다.
+
+(추가로)
+
+현대 C++에서는 std::bind 대신 람다 표현식을 사용하는 것이 더 일반적이다.
+```c++
+EvilBadGuy ebg2([&currentLevel](const GameCharacter& gc) {
+    return currentLevel.healthCalc(gc);
+});
+```
+
+<br/>
+
+**"고전적인" 전략 패턴**
+
+C++만으로 파고드는 방법보다 디자인 패턴 쪽에 더 조예가 깊은 사람들도 있을 것이다.
+이런 사람들을 위한 더 전통적인 방법으로 구현한 전략 패턴도 알아보자.
+체력치 계산 함수를 나타내는 클래스 계통을 아예 따로 만들고,
+실제 체력치 계산 함수는 이 클래스 계통의 가상 멤버 함수로 만드는 것이다.
+
+GameCharacter가 상위 계통의 파생 클랫이고 EvilBadGuy 및 EyeCandyCharacter는 여기서 갈라져 나온 파생 클래스이며,
+한편 HealthCalcFunc는 SlowHealthLoser, FastHealthLoser 등을 파생 클래스로 거느린 최상위 클래스이다.
+그리고 GameCharacter 타입을 따르는 모든 객체는 HealthCalcFunc 타입의 객체에 대한 포인터를 포함해야 한다.
+
+코드를 보면 다음과 같다.
+```c++
+class GameCharacter;
+
+class HealthCalcFunc
+{
+public:
+    ...
+    virtual int cacl(const GameCharacter& gc) const { ... }
+    ...
+};
+
+HealthCalcFunc defaultHealthCalc;
+
+class GameCharacter
+{
+public:
+    explicit GameCharacter(HealthCalcFunc* phcf = &defaultHealthCalc)
+        : pHealthCalc(phcf)
+        { }
+        
+    int healthValue() const { return pHealthCalc->calc(*this); }
+    ...
+    
+private:
+    HealthCalcFunc* pHealthCalc;
+};
+```
+
+이 방법은 "표준적인" 전략 패턴 구현 방법에 친숙한 경우에 빨리 이해할 수 있다는 점에서 매력적이다.
+게다가 HealthCalcFunc 클래스 계통에 파생 클래스를 추가함으로써 기존의 체력치 계산 알고리즘을 조정할 수 있는 가능성을 열어두었다는 점도 플러스이다.
+
+<br/>
+
+**지금까지 공부한 것들에 대한 요약**
+
+이번 항목의 핵심 조언은 '어떤 문제를 해결하기 위한 설계를 찾을 때 가상 함수를 대신하는 방법들도 고려해 보자'라는 것이다.
+지금까지 살펴본 것들을 다시 간단히 정리해 보자.
+
+- **비가상 인터페이스 관용구**(NVI 관용구)를 사용한다 : 공개되지 않은 가상 함수를 비가상 public 멤버로 감싸서 호출하는, 템플릿 메서드 패턴의 한 형태이다.
+- 가상 함수를 **함수 포인터 데이터 멤버**로 대체한다 : 군더더기 없는 전략 패턴의 핵심만을 보여주는 형태이다.
+- 가상 함수를 **std::function** 데이터 멤버로 대체하여, 호환되는 시그니처를 가진 함수호출성 개체를 사용할 수 있도록 만든다 : 역시 전략 패턴의 한 형태이다.
+- 한쪽 클래스 계통에 속해 있는 가상 함수를 **다른 쪽 계통에 속해 있는 가상 함수**로 대체한다 : 전략 패턴의 전통적인 구현 형태이다.
+
+가상 함수 대신 쓸 수 있는 방법으로 이번 항목에서 본 네 가지가 전부는 아니지만, 대안이 얼마든지 있다는 점을 공부하는 데에는 충분하다.
+게다가 각 방법들의 장단점까지 비교해 보았으니, 나중에 실제로 일이 생길 때 충분히 고려할 수 있을 것이다.
+
+> 가상 함수 대신에 쓸 수 있는 다른 방법으로 NVI 관용구 및 전략 패턴을 들 수 있다.
+> 이 중 NVI 관용구는 그 자체가 템플릿 메서드 패턴의 한 형태이다. <br/>
+
+> 객체의 필요한 기능을 멤버 함수로부터 클래스 외부의 비멤버 함수로 옮기면,
+> 그 비멤버 함수는 그 클래스의 public 멤버가 아닌 것들을 접근할 수 없다는 단점이 생긴다.
+
+> std::function 객체는 일반화된 함수 포인터처럼 동작한다.
+> 이 객체는 주어진 대상 시그니처와 호환되는 모든 함수호출성 개체를 지원한다.
 
 <br/>
 
