@@ -9,7 +9,7 @@ tags: [Programming Language]
 pin: false
 math: true
 mermaid: true
-published: false
+published: true
 ---
 
 ### 항목 36 : 상속받은 비가상 함수를 파생 클래스에서 재정의하는 것은 절대 금물!

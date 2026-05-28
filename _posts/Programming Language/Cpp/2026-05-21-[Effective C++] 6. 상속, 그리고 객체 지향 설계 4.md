@@ -9,7 +9,7 @@ tags: [Programming Language]
 pin: false
 math: true
 mermaid: true
-published: false
+published: true
 ---
 
 ### 항목 39 : private 상속은 심사숙고해서 구사하자
