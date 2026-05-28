@@ -323,26 +323,80 @@ void f(const C& container,                  // typename을 쓰면 안 됨
 이 예외란, 중첩 의존 타입 이름이 기본 클래스의 리스트에 있거나 멤버 초기화 리스트 내의 기본 클래스 식별자로서 있을 경우에는 typename을 붙여 주면 안 된다는 것이다.
 다음의 예제를 보자.
 
+```c++
+template<typename T>
+class Derived : public Base<T>::Nested // 상속되는 기본 클래스 리스트 : typename을 쓰면 안 된다.
+{
+public:
+    explicit Derived(int x)
+    : Base<T>::Nested(x) //  멤버 초기화 리스트에 있는 기본 클래스 식별자 : typename을 쓰면 안 된다.
+    {
+        typename Base<T>::Nested temp; 
+        // 중첩 의존 타입 이름이며, 기본 클래스 리스트에도 없고, 멤버 초기화 리스트의 기본 클래스 식별자도 아님. typename 필요
+        ...
+    }
+    ...
+};
+```
 
+이런 식으로 이랬다저랬다 하는 게 싫어질 것도 같지만, 일단 몇 번만 경험해 보면 크게 거슬리는 일은 없을 것이다.
 
+마지막으로 typename에 관한 예제를 하나만 더 보도록 하자. 이 예제는 현업 코드에서 우리가 보게 될 대표적인 사례일 것이다.
+우리가 반복자를 매개변수로 받는 어떤 함수 템플릿을 만들고 있는데, 
+매개변수로 넘어온 반복자가 가리키는 객체의 사본을 temp라는 이름의 지역 변수로 만들어 놓고 싶다고 가정하자.
+그러면 다음과 비슷한 코드가 나올 것이다.
 
+```c++
+template<typename IterT>
+void workWithIterator(IterT iter)
+{
+    typename std::iterator_traits<IterT>::value_type temp(*iter);
+    ...
+}
+```
 
+std::iterator_traits<IterT>::value_type을 보고 당황하는 사람이 없었으면 좋겠다.
+그저 C++ 표준의 특성정보(trait) 클래스를 사용한 것뿐이다.
+우리말로 풀면 "IterT 타입의 객체로 가리키는 대상의 타입"이란 뜻이다.
+이 문장은 IterT 객체가 가리키는 것과 똑같은 타입의 지역 변수(temp)를 선언한 후, iter가 가리키는 객체로 그 temp를 초기화하는 문장이다.
+만일 IterT가 vector<int>::iterator라면 temp의 타입은 int일 것이다.
+IterT가 list<string>::iterator라면 temp의 타입은 string이 될 것이다.
+어쨌든 여기서 std::iterator_traits<IterT>::value_type은 중첩 의존 타입 이름이므로
+(value_type이 iterator_traits<IterT> 안에 중첩되어 있고, IterT는 템플릿 매개변수이다),
+이 이름 앞에는 typename을 써 주어야 한다.
 
+혹시 우리 중에 std::iterator_traits<IterT>::value_type이 왠지 읽기가 거북하다고 느끼는 사람이 있다면
+이걸 키보드로 치면 또 어떤 느낌일까라고 상상해보자.
+저 이름을 두 번 이상 친다고 생각만 해도 숨이 막힐지도 모른다.
+그래서 typedef 이름을 만들고 싶을 것이다.
+참, 특성정보 클래스에 속한 value_type 등의 멤버 이름에 대해 typedef 이름을 만들 때는 그 멤버 이름과 똑같이 짓는 것이 관례로 되어 있다.
+따라서 이런 경우에는 typedef로 정의하는 지역 이름을 대개 다음과 같이 짓는다.
 
+```c++
+template<typename IterT>
+void workWithIterator(IterT iter)
+{
+    typedef typename std::iterator_traits<IterT>::value_type value_type;
+    value_type temp(*iter);
+    ...
+}
+```
 
+하나씩 따로 있어야 할 것들이 "typedef typename" 형태로 나란히 있는 게 뭔가 잘못 된 것 같다고 생각할 수 있지만,
+이것은 그저 중첩 의존 타입 이름을 참조하는 데 지켜야 할 규칙 때문에 생긴 부산물이며 논리적으로도 하자가 없다.
+모르긴 해도 적응하는 데 그리 오래 걸리지 않을 것이다. 또 사실 이렇게 할 수밖에 없는 이유도 있다.
+제정신이라면 대체 typename std::iterator_traits<IterT>::value_type을 몇 번까지 또박또박 칠 수 있을까?
 
+이야기를 끝내기 전에 한 가지만 더 알아가자. 사실, 이번 항목에 나온 typename에 관한 규칙을 얼마나 강조하느냐는 컴파일러마다 조금씩 차이가 있다.
+어떤 컴파일러는 typename을 꼭 써야 하는데 빼먹은 경우를 그대로 받아들이고, 또 어떤 컴파일러는 typename이 쓰였지만 원래는 허용되지 않는 경우를 내버려 둔다.
+이 외에 typename이 쓰였고 문맥상 꼭 써야 하는 부분인데도 typename을 거부하는 컴파일러도 몇 개 있다(대개 구닥다리 컴파일러다).
+무슨 뜻인지 알 것이다.
+typename과 중첩 의존 타입 이름 사이에는 아직도 이런 미묘한 관계가 있기 때문에 프로그램을 이식할 때 다소 골치가 아플 수 있다는 것이다.
 
+> 템플릿 매개변수를 선언할 때, class 및 typename은 서로 바꾸어 써도 무방하다.
 
-
-
-
-
-
-
-
-
-
-
+> 중첩 의존 타입 이름을 식별하는 용도에는 반드시 typename을 사용하자.
+> 단, 중첩 의존 이름이 기본 클래스 리스트에 있거나 멤버 초기화 리스트 내의 기본 클래스 식별자로 있는 경우에는 예외이다.
 
 <br/>
 
