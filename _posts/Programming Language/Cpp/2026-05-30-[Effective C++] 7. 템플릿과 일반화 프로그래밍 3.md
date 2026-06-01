@@ -9,7 +9,7 @@ tags: [Programming Language]
 pin: false
 math: true
 mermaid: true
-published: false
+published: true
 ---
 
 ### 항목 45 : "호환되는 모든 타입"을 받아들이는 데는 멤버 함수 템플릿이 직방!
@@ -210,7 +210,202 @@ public:
 > 일반화된 복사 생성 연산과 일반화된 대입 연산을 위해 멤버 템플릿을 선언헀다 하더라도,
 > 보통의 복사 생성자와 복사 대입 연산자는 여전히 직접 선언해야 한다.
 
+<br/>
 
+### 항목 46 : 타입 변환이 바람직할 경우에는 비멤버 함수를 클래스 템플릿 안에 정의해 두자.
+
+---
+
+모든 매개변수에 대해 암시적 타입 변환이 되도록 만들기 위해서는 비멤버 함수밖에 방법이 없다는, 
+이번 항목과 조금 비슷한 이야기는 이전에 항목 24에서 이유까지 말한 바 있다.
+그 당시, Rational 클래스의 operator* 함수가 예제로 나왔었다. 이번 항목에서는 이 예제를 다시 활용하기에 다시 한번 보고 오도록 하자.
+어떻게 할 거냐면, Rational 클래스와 operator* 함수를 템플릿으로 만들 것이다.
+
+```c++
+template <typename T>
+class Rational
+{
+public:
+    Rational(const T& numerator = 0, const T& denominator = 1);
+    
+    const T numerator() const;
+    const T denominator() const;
+    ...
+};
+
+template <typename T>
+const Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs)
+{ ... }
+```
+
+항목 24에서도 그랬듯, 혼합형 수치 연산은 여전히 필요하다. 다음의 코드가 컴파일되어야 하는 거다.
+그런데 이미 항목 24에서 동작하는 코드를 그대로 가져왔기 때문에, 컴파일이 안 되는 게 더 이상할 것 같다.
+차이점이라면 Rational 및 operator* 부분이 이제는 템플릿이라는 것밖엔 없다.
+
+```c++
+Rational<int> onehalf(1, 2);
+
+Rational<int> result = onehalf * 2; // 에러! 컴파일이 안 된다.
+```
+
+컴파일이 되지 않는다는 사실을 미루어 볼 때, 템플릿 버전의 Rational에는 템플릿이기 전의 버전과 다른 무언가가 있지 않을까 싶다.
+실제로 있다. 항목 24에서는 우리가 호출하려고 하는 함수가 무엇인지를 컴파일러가 알고 있지만(Rational 객체 두 개를 받는 operator* 함수),
+지금의 경우에는 어떤 함수를 호출하려는지에 대해 컴파일러로서는 아는 바가 전혀 없다.
+단지, 컴파일러는 operator*라는 이름의 템플릿으로부터 인스턴스화할 함수를 결정하기 위해 온갖 계산을 동원할 뿐이다.
+이 시점에서 컴파일러가 정확히 아는 것은 `Rational<T>` 타입의 매개변수를 두 개 받아들이는 operator*라는 이름의 함수를
+자신이 어떻게든 인스턴스로 만들긴 해야 한다는 점이다. 그러나 이 인스턴스화를 제대로 하려면 '대체 T가 무엇이냐?'에 대한 수수께끼를 풀어야 한다.
+문제는 바로, 컴파일러 스스로는 이 수수께끼를 풀 능력이 없다는 것이다.
+
+T의 정체를 파악하기 위해, 컴파일러는 우선 operator* 호출 시에 넘겨진 인자의 모든 타입을 살핀다.
+지금의 경우에는 `Rational<int>` 및 int이다. 컴파일러는 이들을 하나씩 각개 격파해 간다.
+
+oneHalf 쪽은 의외로 공략이 쉽다. operator*의 첫 번째 매개변수는 `Rational<T>` 타입으로 선언되어 있고,
+지금 operator*에 넘겨진 첫 번째 매개변수가 마침 또 `Rational<int>` 타입이기 때문에, T는 int일 수밖에 없다.
+
+하지만 애석하게도 두 번째 매개변수 쪽은 타입을 유추해내기가 어렵다.
+operator*의 선언을 보면 두 번째 매개변수가 `Rational<T>` 타입으로 선언되어 있는데, 지금 operator*에 넘겨진 두 번째 매개변수는 int 타입이다.
+이때 컴파일러는 어떻게 해야 T의 정체를 벗겨낼 수 있을까?
+
+`Rational<int>`에는 explicit로 선언되지 않은 생성자가 들어있다는 것을 확인한 사람이라면,
+혹시 컴파일러가 이 생성자를 써서 2를 `Rational<int>`로 변환하고 이릍 통해 T가 int라고 유추할 수 있지 않을까 하고 예상할 것 같은데,
+컴파일러는 그렇게 동작하지 못한다.
+**그 이유는, 템플릿 인자 추론(template argument deduction) 과정에서는 암시적 타입 변환이 고려되지 않기 때문이다.**
+절대로 안된다. 이런 타입 변환은 함수 호출이 진행될 때 쓰이는 것은 맞다.
+그러나 우리가 함수를 호출할 수 있으려면 어떤 함수가 있는지를 우리가 미리 알고 있어야 한다.
+게다가 호출되는 상황에 맞는 함수 템플릿을 넣어 줄 매개변수 타입을 추론하는 일도(함수를 인스턴스화해야 하니 말이다) 우리가 해야 한다.
+**하지만, 다시 말하지만 템플릿 인자 추론이 진행되는 동안에는 생성자 호출을 통한 암시적 타입 변환 자체가 고려되지 않는다.**
+사실 항목 24에서는 템플릿이 거론되지 않았기 때문에, 템플릿 인자 추론 문제가 불거지지 않은 것 뿐이다.
+지금은 C++의 템플릿 부분에 와 있으므로, 이것은 아주 중대한 문제이다.
+
+이처럼 힘든 처지에서 템플릿 인자 추론을 해야 하는 수고로부터 컴파일러를 해방시킬 수 있는 방법이 있다.
+클래스 템플릿 안에 프렌드 함수를 넣어 두면 함수 템플릿으로서의 성격을 주지 않고 특정한 함수 하나를 나타낼 수 있다는 사실을 이용하는 것이다.
+다시 말해, `Rational<T>` 클래스에 대해 operator*를 프렌드 함수로 선언하는 것이 가능하다는 이야기이다.
+클래스 템플릿은 템플릿 인자 추론 과정에 좌우되지 않으므로(템플릿 인자 추론은 함수 템플릿에만 적용되는 과정이다),
+T의 정확한 정보는 `Rational<T>` 클래스가 인스턴스화될 당시에 바로 알 수 있다.
+그렇기 때문에, 호출 시의 정황에 맞는 operator* 함수를 프렌드로 선언하는 데 별 어려움이 없는 것이다.
+
+```c++
+template <typename T>
+class Rational
+{
+public:
+    ...
+friend
+    const Rational operator*(const Rational& lhs, const Rational& rhs);
+};
+
+template <typename T>
+const Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs)
+{ ... }
+```
+
+이제 우리는 혼합형 operator* 호출이 컴파일되는 코드를 보고 있다.
+oneHalf 객체가 'Rational<int>' 타입으로 선언되면 'Rational<int>' 클래스가 인스턴스로 만들어지고,
+이때 그 과정의 일부로서 'Rational<int>' 타입의 매개변수를 받는 프렌드 함수인 operator*도 자동으로 선언되기 때문이다.
+이전과 달리 지금은 **함수**가 선언된 것이므로(함수 **템플릿**이 아니라),
+컴파일러는 이 호출문에 대해 암시적 변환 함수(Rational의 비명시 호출 생성자 등)를 적용할 수 있게 되는 것이다.
+컴파일에 성공하는 이유는 이게 전부이다.
+
+하지만 이 코드는 컴파일은 되지만, 링크가 안 된다.
+이 문제는 조금 있다가 바로 잡겠지만, 우선 필자는 Rational 안에 operator*를 선언하는 데 사용한 문법에 대해 몇 가지 말하고자 한다.
+
+클래스 템플릿 내부에서는 템플릿의 이름(<> 뗀 것)을 그 템플릿 및 매개변수의 줄임말로 쓸 수 있다.
+그러니까 `Rational<T>` 안에서는 Rational이라고만 써도 `Rational<T>`로 먹힌다는 거다.
+위의 예제에서야 몇 자 덜 치는 정도이지만, 매개변수가 여러 개이거나 매개변수 이름이 길거나 할 경우에는 이처럼 고마운 것도 없다.
+손가락도 덜 피곤해지고 코드도 깔끔해지기에 위의 예제에서 이걸 써먹어 봤다.
+operator* 함수의 선언부를 보면 매개변수 타입과 반환 타입이 `Rational<T>`가 아니라 `Rational`으로 되어 있다.
+사실 다음과 같이 선언하더라도 똑같은 의미이다.
+
+```c++
+template <typename T>
+class Rational
+{
+public:
+    ...
+friend
+    const Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs);
+    ...
+};
+```
+
+다시 링크 문제로 돌아오자. 지금의 혼합형 호출 코드는 컴파일까지는 잘 된다.
+우리가 어떤 함수를 호출하려는지 컴파일러가 알 수 있게 됐으니까(`Rational<int>` 두 개를 받아들이는 operator* 함수).
+그런데 이 함수는 Rational 안에서 **선언**만 되어 있지, 거기에서 **정의**까지 되어 있는 것은 아니다.
+클래스 외부에 있는 operator* 템플릿에서 함수 정의를 제공하도록 만들고 싶은 것이 우리들 의도였지만, 바람대로 일이 풀리지는 않았다.
+어떤 함수를 우리들이 직접 선언했으면, 그 함수를 정의하는 일도 우리가 책임져야 한다.
+그런데 함수 정의는커녕 코빼기도 보이지 않으니, 링커가 못 찾는 게 당연하다.
+
+가장 간단하게 해결하려면, operator* 함수의 본문을 선언부와 붙이면 된다.
+
+```c++
+template <typename T>
+class Rational
+{
+public:
+    ...
+    friend const Rational operator*(const Rational& lhs, const Rational& rhs)
+    {
+        return Rational(lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator());
+    }
+};
+```
+
+드디어 끝까지 돌아가는 코드가 나왔다. operator* 함수의 혼합형 호출 코드가 이제는 컴파일도 되고, 링크도 되고, 실행도 된다.
+
+이번 항목에서 필자가 보여준 이 방법에는 재미있는 이야깃거리가 하나 숨어 있다.
+프렌드 함수를 선언하긴 했지만, 클래스의 public 영역이 아닌 부분에 접근하는 것과 프렌드 권한은 아무런 상관이 없다는 게 바로 그것이다.
+모든 인자에 대해 타입 변환이 가능하도록 만들기 위해 비멤버 함수가 필요하고(항목 24 내용),
+호출 시의 상황에 맞는 함수를 자동으로 인스턴스화하기 위해서는 그 비멤버 함수를 클래스 안에 선언해야 한다.
+공교롭게도, 클래스 안에 비멤버 함수를 선언하는 유일한 방법이 '프렌드'였을 뿐이다.
+그래서 그렇게 한 것이고, 효과적이다.
+
+항목 30에서 클래스 안에 정의된 함수는 암시적으로 인라인으로 선언된다. 지금의 operator* 같은 프렌드 함수도 예외는 아니다.
+클래스 바깥에서 정의된 헬퍼 함수만 호출하는 식으로 operator*를 구현하면 이러한 암시적 인라인 선언의 영향을 최소화할 수도 있다.
+물론 이번 항목에서 보여준 예제에서는 그렇게 해 봤자 얻는 점수가 그다지 많지 않다. 이미 한 줄 함수로 구현되어 있기 때문이다.
+하지만 꽤 복잡하게 작성된 함수 본문이 이런 식으로 끼어들어가 있다면 한 번 해 봄 직하다.
+이른바 "프렌드 함수는 헬퍼만 호출하게 만들기" 방법이다. 잘 기억해 두자.
+
+Rational이 템플릿이란 사실을 놓고 살짝만 머리를 돌려보면 헬퍼 함수도 대개 템플릿일 것이라는 말도 된다.
+그러고 보면, Rational을 정의하는 헤더 파일에 들어 있는 코드는 아마 다음과 같은 형태가 아닐까?
+
+```c++
+template <typename T> class Rational;
+
+template <typename T> // 헬퍼 함수
+const Rational<T> doMultiply(const Rational<T>& lhs, const Rational<T>& rhs);
+
+template <typename T>
+class Rational
+{
+public:
+    ...
+    friend const Rational operator*(const Rational& lhs, const Rational& rhs)
+    { return doMultiply(lhs, rhs); } // 프렌드 함수가 헬퍼 함수를 호출하도록 만들기
+    ...
+};
+```
+
+대다수의 컴파일러에서 템플릿 정의를 헤더 파일에 전부 넣을 것을 사실상 강제로 강요하다시피 하고 있으니,
+doMultiply도 헤더 파일 안에 정의해 넣어야 할 것이다
+(항목 30에서도 이야기했지만, 이런 템플릿은 인라인일 필요가 없다).
+아마 다음과 같은 형태일 것이다.
+
+```c++
+template <typename T>
+const Rational<T> doMultiply(const Rational<T>& lhs, const Rational<T>& rhs)
+{
+    return Rational<T>(lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator());
+}
+```
+
+물론 doMultiply는 템플릿으로서 혼합형 곱셈을 지원하지 못하겠지만, 지원할 필요가 없다.
+이 템플릿을 사용하는 고객은 operator*밖에 없을 텐데, operator*가 이미 혼합형 연산을 지원하고 있으니 말이다.
+operator* **함수**는 자신이 받아들이는 매개변수가 제대로 곱해지도록 어떤 타입도 Rational 객체로 바꿔 주고,
+이렇게 바꾼 Rational 객체 두 개는 doMultiply **템플릿**의 인스턴스가 날름 받아서 실제 곱셈에 써먹는단 말이다.
+손발이 착착 맞는다.
+
+> 모든 매개변수에 대해 암시적 타입 변환을 지원하는 템플릿과 관계가 있는 함수를 제공하는 클래스 템플릿을 만들려고 한다면,
+> 이런 함수는 클래스 템플릿 안에 프렌드 함수로 정의하자.
 
 <br/>
 
