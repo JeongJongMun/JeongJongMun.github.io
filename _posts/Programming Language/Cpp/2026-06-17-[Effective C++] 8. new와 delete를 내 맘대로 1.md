@@ -565,5 +565,29 @@ malloc에서 얻은 포인터를 operator new가 바로 반환하는 것은 '안
 
 <br/>
 
+### 추가로
+
+---
+
+위에서 예외 지정을 위해서 `throw()`, `throw(bad_alloc)`을 사용했는데 이건 현대 C++에서 제거됐으니 **noexcept** 키워드를 사용하자
+```c++
+typedef void (*new_handler)();
+new_handler set_new_handler(new_handler p) noexcept;
+```
+
+그리고 다시 복기하자면, NewHandlerHolder RAII 객체에서 복사를 막기위해 
+복사 생성자와 복사 대엽 연산자를 private 구역에 선언만 하고 구현은 하지 않는 방식을 사용했지만,
+현대 C++에서는 `= delete` 구문을 사용해서 컴파일러 수준에서 복사를 막는다.
+의도가 훨씬 잘 드러나고 컴파일 에러 메세지도 명확해진다.
+
+```c++
+class NewHandlerHolder 
+{
+public:
+    NewHandlerHolder(const NewHandlerHolder&) = delete;
+    NewHandlerHolder& operator=(const NewHandlerHolder&) = delete;
+};
+```
+
 _참고_
 - [Effective C++ 제3판](https://www.yes24.com/product/goods/17525589)
