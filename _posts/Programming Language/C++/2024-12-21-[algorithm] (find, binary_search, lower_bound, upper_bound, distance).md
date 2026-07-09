@@ -2,8 +2,8 @@
 title: "[algorithm] (find, binary_search, lower_bound, upper_bound, distance)"
 writer: Langerak
 date: 2024-12-21 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Programming Language, C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true
