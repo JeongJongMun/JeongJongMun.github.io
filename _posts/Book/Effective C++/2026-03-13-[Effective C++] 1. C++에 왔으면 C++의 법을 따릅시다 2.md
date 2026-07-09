@@ -2,8 +2,8 @@
 title: "[Effective C++] 1. C++에 왔으면 C++의 법을 따릅시다 [2/2]"
 writer: Langerak
 date: 2026-03-13 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true

@@ -2,8 +2,8 @@
 title: "[Effective C++] 5. 구현 [2/3]"
 writer: Langerak
 date: 2026-04-30 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true

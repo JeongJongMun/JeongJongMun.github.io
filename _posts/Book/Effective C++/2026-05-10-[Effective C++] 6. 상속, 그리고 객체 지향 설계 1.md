@@ -2,8 +2,8 @@
 title: "[Effective C++] 6. 상속, 그리고 객체 지향 설계 [1/4]"
 writer: Langerak
 date: 2026-05-10 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true

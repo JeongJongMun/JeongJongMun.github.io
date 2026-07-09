@@ -2,8 +2,8 @@
 title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [2/4]"
 writer: Langerak
 date: 2026-03-23 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true

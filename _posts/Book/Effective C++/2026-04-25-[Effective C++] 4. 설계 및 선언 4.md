@@ -2,8 +2,8 @@
 title: "[Effective C++] 4. 설계 및 선언 [4/4]"
 writer: Langerak
 date: 2026-04-25 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true

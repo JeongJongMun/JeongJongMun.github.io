@@ -2,8 +2,8 @@
 title: "[Effective C++] 3. 자원 관리 [2/2]"
 writer: Langerak
 date: 2026-04-03 12:00:00 +0800
-categories: [Programming Language]
-tags: [Programming Language]
+categories: [Book, Effective C++]
+tags: [C++]
 pin: false
 math: true
 mermaid: true
