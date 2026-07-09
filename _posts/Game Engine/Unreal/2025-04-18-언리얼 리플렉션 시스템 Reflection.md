@@ -1,22 +1,15 @@
 ---
 title: "언리얼 리플렉션 시스템 Reflection"
+description: >-
+  이 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
 writer: Langerak
 date: 2025-04-18 12:00:00 +0800
 categories: [Game Engine, Unreal]
-tags: [Game Engine, Unreal]
+tags: [Unreal]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://1drv.ms/i/c/0feb846c92fbe54a/IQTzpBTme7qwSZ5zoY15bcI8Abc4xPSd_TuQiU0Mk325E6w?width=1920&height=1080
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Reflection
 ---
-
-> 이 글은 제 개인적인 공부를 위해 작성한 글입니다.   
-> 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
-
-<br/>
 
 ## 리플렉션
 

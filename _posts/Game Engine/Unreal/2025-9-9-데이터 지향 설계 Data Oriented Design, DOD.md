@@ -1,18 +1,15 @@
 ---
 title: "성능을 높히는 데이터 지향 설계 (Data Oriented Design, DOD)"
+description: >-
+  이 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
 writer: Langerak
 date: 2025-9-9 12:00:00 +0800
 categories: [Game Engine, Unreal]
-tags: [Game Engine, Unreal]
+tags: [Unreal]
 pin: false
 math: true
 mermaid: true
 ---
-
-> 이 글은 제 개인적인 공부를 위해 작성한 글입니다.   
-> 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
-
-<br/>
 
 ### 개요
 
