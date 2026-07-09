@@ -2,7 +2,7 @@
 title: "싱글톤 패턴 Singleton Pattern"
 writer: Langerak
 date: 2025-05-16 12:00:00 +0800
-categories: [Design Pattern]
+categories: [Computer Science, Design Pattern]
 tags: [Design Pattern]
 pin: false
 math: true
