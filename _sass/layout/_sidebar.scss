@@ -360,6 +360,90 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     }
   }
 
+  /* site hits + contact buttons: same width via fit-content wrapper.
+     The buttons row has an intrinsic width; the hits row stretches to it. */
+  .sidebar-bottom-group {
+    align-self: flex-start;
+    width: fit-content;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+
+    @include bp.xxxl {
+      padding-left: 2.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Hidden until the count actually arrives: the analytics domain is
+       often blocked, and an empty row is worse than no row. */
+    .site-hits {
+      display: none;
+      align-items: center;
+      width: 100%;
+      height: 1.75rem; /* matches the round buttons below */
+      margin-bottom: 0.75rem;
+
+      &.loaded {
+        display: flex;
+      }
+      padding: 0 0.7rem;
+      border-radius: 0.75rem;
+      color: var(--sidebar-muted-color);
+      background-color: var(--sidebar-btn-bg);
+      font-size: 0.8rem;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+
+      i {
+        flex: 0 0 auto;
+        font-size: 90%;
+      }
+
+      /* Nudged toward the active color: the plain muted tone only reaches
+         4.3:1 on the dark sidebar, just under WCAG AA for text. */
+      .site-hits-label,
+      .site-hits-today {
+        color: color-mix(
+          in srgb,
+          var(--sidebar-muted-color) 80%,
+          var(--sidebar-active-color)
+        );
+      }
+
+      .site-hits-label {
+        flex: 0 0 auto;
+        margin-left: 0.45rem;
+      }
+
+      .site-hits-value {
+        flex: 1 1 auto;
+        margin-left: 0.5rem;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .site-hits-today {
+        font-weight: 600;
+      }
+
+      .site-hits-sep {
+        margin: 0 0.15rem;
+        opacity: 0.5;
+      }
+
+      .site-hits-count {
+        font-weight: 700;
+        color: var(--sidebar-active-color);
+      }
+    }
+
+    .sidebar-bottom {
+      @include mx.pl-pr(0);
+
+      margin-bottom: 0;
+    }
+  }
+
   .sidebar-bottom {
     padding-left: 2rem;
     padding-right: 1rem;

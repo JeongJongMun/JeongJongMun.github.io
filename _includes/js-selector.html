@@ -84,3 +84,8 @@
     {% endcase %}
   {% endif %}
 {% endif %}
+
+<!-- Total site views in the sidebar (every page) -->
+{% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
+  {% include site-hits.html %}
+{% endif %}

@@ -127,11 +127,20 @@
     </ul>
   </nav>
 
-  <div class="text-center w-100 mb-3">
-    <a href="https://myhits.vercel.app"><img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Fjeongjongmun.github.io%2F?color=purple&label=hits&size=large" alt="hits" /></a>
-  </div>
+  <div class="sidebar-bottom-group">
+    {% if site.analytics.goatcounter.id %}
+      <div class="site-hits" title="Today / Total views">
+        <i class="far fa-eye fa-fw"></i>
+        <span class="site-hits-label">Views</span>
+        <span class="site-hits-value">
+          <span class="site-hits-today" id="site-hits-today"></span>
+          <span class="site-hits-sep" aria-hidden="true">/</span>
+          <span class="site-hits-count" id="site-hits-count"></span>
+        </span>
+      </div>
+    {% endif %}
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+    <div class="sidebar-bottom d-flex flex-wrap align-items-center">
     {% unless site.theme_mode %}
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
         <i class="fas fa-adjust"></i>
@@ -182,7 +191,9 @@
         </a>
       {% endif %}
     {% endfor %}
+    </div>
+    <!-- .sidebar-bottom -->
   </div>
-  <!-- .sidebar-bottom -->
+  <!-- .sidebar-bottom-group -->
 </aside>
 <!-- #sidebar -->
