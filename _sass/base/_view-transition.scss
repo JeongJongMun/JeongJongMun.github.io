@@ -1,0 +1,22 @@
+/* Cross-document view transitions: fade between pages.
+   Unsupported browsers (e.g. Firefox) fall back to instant navigation. */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+
+/* The sidebar is identical on every page: give it its own
+   transition group so it stays static while the content fades. */
+#sidebar {
+  view-transition-name: sidebar;
+}
+
+/* NOTE: no prefers-reduced-motion guard on purpose — this is a pure
+   cross-fade (no movement), which is itself the recommended
+   reduced-motion-safe transition. */
