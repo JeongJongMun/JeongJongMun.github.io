@@ -381,10 +381,6 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       width: 100%;
       height: 1.75rem; /* matches the round buttons below */
       margin-bottom: 0.75rem;
-
-      &.loaded {
-        display: flex;
-      }
       padding: 0 0.7rem;
       border-radius: 0.75rem;
       color: var(--sidebar-muted-color);
@@ -393,6 +389,10 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       letter-spacing: 0.2px;
       white-space: nowrap;
       box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+
+      &.loaded {
+        display: flex;
+      }
 
       i {
         flex: 0 0 auto;
