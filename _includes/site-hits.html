@@ -1,5 +1,8 @@
 <!-- Today / total site views (GoatCounter) shown in the sidebar -->
 <script>
+  /* NOTE: `compress_html` collapses this script onto a single line in
+     production, so line comments would swallow the rest of the code.
+     Use block comments only in here. */
   document.addEventListener('DOMContentLoaded', () => {
     const totalEl = document.getElementById('site-hits-count');
     const todayEl = document.getElementById('site-hits-today');
@@ -9,32 +12,32 @@
     }
 
     const row = totalEl.closest('.site-hits');
-    const base = `https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/TOTAL.json`;
+    const base = 'https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/TOTAL.json';
 
-    // GoatCounter reads dates in the site's own timezone and has no future
-    // data, so `start=<today>` alone yields exactly today's count.
+    /* GoatCounter reads dates in the site's own timezone and has no future
+       data, so `start=<today>` alone yields exactly today's count. */
     const today = new Date().toISOString().slice(0, 10);
 
     const read = (url) =>
       fetch(url)
         .then((res) => {
           if (!res.ok) {
-            throw new Error(`${res.status} ${res.statusText}`);
+            throw new Error(res.status + ' ' + res.statusText);
           }
           return res.json();
         })
         .then((data) => Number(data.count.replace(/\D/g, '')));
 
-    Promise.all([read(base), read(`${base}?start=${today}`)])
-      .then(([total, todayCount]) => {
+    Promise.all([read(base), read(base + '?start=' + today)])
+      .then((counts) => {
         const fmt = new Intl.NumberFormat();
-        totalEl.innerText = fmt.format(total);
-        todayEl.innerText = fmt.format(todayCount);
+        totalEl.innerText = fmt.format(counts[0]);
+        todayEl.innerText = fmt.format(counts[1]);
         row.classList.add('loaded');
       })
       .catch((error) => {
-        // Analytics domains are commonly blocked by tracking prevention and
-        // ad blockers. Stay hidden rather than showing an empty row.
+        /* Analytics domains are commonly blocked by tracking prevention and
+           ad blockers. Stay hidden rather than showing an empty row. */
         console.warn('[site-hits] could not load view count:', error);
       });
   });
