@@ -5,9 +5,11 @@
   navigation: auto;
 }
 
+/* Applies to both page navigation and the theme-toggle transition
+   (theme-fade.html wraps Theme.flip in startViewTransition). */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 250ms;
+  animation-duration: 200ms;
   animation-timing-function: ease;
 }
 

@@ -16,3 +16,14 @@
       fill 0.2s ease !important;
   }
 }
+
+/* While the theme toggle runs as a view transition, per-element transitions
+   (e.g. the post-preview hover fade) would keep animating inside the new
+   snapshot at their own pace. Disable them so the snapshot cross-fade is
+   the only animation. */
+html.theme-snapping,
+html.theme-snapping *,
+html.theme-snapping *::before,
+html.theme-snapping *::after {
+  transition: none !important;
+}

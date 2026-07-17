@@ -6,15 +6,43 @@
   (() => {
     const html = document.documentElement;
     let timer = null;
+    let viewTransitionActive = false;
 
+    /* Fallback: uniform per-element transition via a temporary class. */
     const fade = () => {
+      if (viewTransitionActive) {
+        return;
+      }
+
       html.classList.add('theme-fading');
       clearTimeout(timer);
       timer = setTimeout(() => html.classList.remove('theme-fading'), 250);
     };
 
-    /* Explicit toggle: the mode switcher flips `data-mode` on <html>.
-       Observing the attribute keeps us decoupled from the theme's JS. */
+    /* Preferred path: wrap Theme.flip in a view transition. The browser
+       cross-fades one GPU snapshot of the whole page, so the duration is
+       constant regardless of how heavy the page is, and gradients, filters
+       and images are all included. The toggle button calls Theme.flip()
+       lazily, so patching the global here is enough. */
+    if (window.Theme && document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const original = Theme.flip.bind(Theme);
+
+      Theme.flip = () => {
+        viewTransitionActive = true;
+
+        /* Suppress per-element transitions (e.g. the post-preview hover
+           transition) while the snapshot cross-fade runs, so every element
+           lands at exactly the same speed. */
+        html.classList.add('theme-snapping');
+        const vt = document.startViewTransition(original);
+        vt.finished.finally(() => {
+          html.classList.remove('theme-snapping');
+          viewTransitionActive = false;
+        });
+      };
+    }
+
+    /* Attribute flip without Theme.flip (e.g. other scripts). */
     new MutationObserver(fade).observe(html, {
       attributes: true,
       attributeFilter: ['data-mode']
