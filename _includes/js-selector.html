@@ -89,3 +89,8 @@
 {% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
   {% include site-hits.html %}
 {% endif %}
+
+<!-- Uniform fade when switching between light and dark themes -->
+{% unless site.theme_mode %}
+  {% include theme-fade.html %}
+{% endunless %}

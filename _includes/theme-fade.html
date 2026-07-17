@@ -1,0 +1,27 @@
+<!-- Fade every color change when the theme flips (styles in _sass/base/_theme-fade.scss) -->
+<script>
+  /* NOTE: `compress_html` collapses this script onto a single line in
+     production, so line comments would swallow the rest of the code.
+     Use block comments only in here. */
+  (() => {
+    const html = document.documentElement;
+    let timer = null;
+
+    const fade = () => {
+      html.classList.add('theme-fading');
+      clearTimeout(timer);
+      timer = setTimeout(() => html.classList.remove('theme-fading'), 250);
+    };
+
+    /* Explicit toggle: the mode switcher flips `data-mode` on <html>.
+       Observing the attribute keeps us decoupled from the theme's JS. */
+    new MutationObserver(fade).observe(html, {
+      attributes: true,
+      attributeFilter: ['data-mode']
+    });
+
+    /* Following the OS (no data-mode attribute): the media query flips
+       without any attribute change. */
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fade);
+  })();
+</script>

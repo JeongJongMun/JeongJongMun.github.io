@@ -1,0 +1,18 @@
+/* Uniform cross-fade between light and dark themes.
+   `theme-fade.html` puts `.theme-fading` on <html> for ~400ms whenever the
+   theme flips; during that window every color-ish property transitions at
+   one speed, overriding the scattered per-element hover transitions. */
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-fading,
+  html.theme-fading *,
+  html.theme-fading *::before,
+  html.theme-fading *::after {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      fill 0.2s ease !important;
+  }
+}
