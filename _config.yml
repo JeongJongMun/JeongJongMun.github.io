@@ -21,6 +21,14 @@ tagline: Game Client # it will display as the subtitle
 description: >- # used by seo meta and the atom feed
   다 먹고 살자고 하는거지
 
+# Boilerplate stripped from auto-generated post descriptions (meta tags,
+# feeds, search snippets). Without this, every post that opens with the
+# same disclaimer ends up sharing one identical description.
+# The post body itself is unaffected.
+description_boilerplate:
+  - "이 글은 제 개인적인 공부를 위해 작성한 글입니다."
+  - "틀린 내용이 있을 수 있고, 피드백은 환영합니다."
+
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://jeongjongmun.github.io"
