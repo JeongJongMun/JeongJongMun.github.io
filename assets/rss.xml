@@ -1,0 +1,42 @@
+---
+layout: compress
+permalink: /rss.xml
+# RSS 2.0 feed, kept alongside the Atom feed because Naver Search Advisor
+# only accepts RSS 2.0. Reference: https://validator.w3.org/feed/docs/rss2.html
+---
+
+{% capture source %}<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title }}</title>
+    <link>{{ '/' | absolute_url }}</link>
+    <description>{{ site.description }}</description>
+    <!-- Content language, not the UI language: the site chrome is English
+         but the posts are Korean, and this feed exists for Naver. -->
+    <language>ko</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll {{ jekyll.version }}</generator>
+    <atom:link href="{{ page.url | absolute_url }}" rel="self" type="application/rss+xml" />
+
+{% for post in site.posts limit: 30 %}
+  {% assign post_absolute_url = post.url | absolute_url %}
+    <item>
+      <title>{{ post.title }}</title>
+      <link>{{ post_absolute_url }}</link>
+      <guid isPermaLink="true">{{ post_absolute_url }}</guid>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <author>{{ post.author | default: site.social.name }}</author>
+
+  {% if post.categories %}
+    {% for category in post.categories %}
+      <category>{{ category }}</category>
+    {% endfor %}
+  {% endif %}
+
+      <description>{% include post-description.html max_length=400 %}</description>
+    </item>
+{% endfor %}
+  </channel>
+</rss>
+{% endcapture %}
+{{ source | replace: '&', '&amp;' }}
