@@ -1,7 +1,5 @@
 ---
 title: "[Effective C++] 7. 템플릿과 일반화 프로그래밍 [3/4]"
-description: >-
-  이 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
 writer: Langerak
 date: 2026-05-30 12:00:00 +0800
 categories: [Book, Effective C++]

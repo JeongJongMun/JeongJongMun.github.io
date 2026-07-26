@@ -13,8 +13,6 @@ image:
   alt: Network
 ---
 
-> 본 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있다면 언제든지 피드백을 주시면 감사하겠습니다. 참고로만 활용해주시길 바랍니다.
-
 ## URL (Uniform Resource Locator)
 
 ---

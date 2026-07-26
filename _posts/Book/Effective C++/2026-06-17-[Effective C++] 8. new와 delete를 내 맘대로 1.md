@@ -1,7 +1,5 @@
 ---
 title: "[Effective C++] 8. new와 delete를 내 맘대로 [1/2]"
-description: >-
-  이 글은 제 개인적인 공부를 위해 작성한 글입니다. 틀린 내용이 있을 수 있고, 피드백은 환영합니다.
 writer: Langerak
 date: 2026-06-17 12:00:00 +0800
 categories: [Book, Effective C++]
