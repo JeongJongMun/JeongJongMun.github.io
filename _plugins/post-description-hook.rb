@@ -12,8 +12,15 @@
 
 MAX_LENGTH = 200
 
-Jekyll::Hooks.register :posts, :pre_render do |post|
-  boilerplate = post.site.config['description_boilerplate'] || []
+# Runs once after all documents are read and before anything renders, so pages
+# that list posts (home, related posts) see the same description as the post's
+# own meta tags. A per-post :pre_render hook fires too late for those lists.
+Jekyll::Hooks.register :site, :post_read do |site|
+  site.posts.docs.each { |post| set_post_description(post, site) }
+end
+
+def set_post_description(post, site)
+  boilerplate = site.config['description_boilerplate'] || []
 
   strip_boilerplate = lambda do |text|
     boilerplate.reduce(text.to_s) { |acc, phrase| acc.gsub(phrase, ' ') }
@@ -32,7 +39,9 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     text.gsub!(/!\[[^\]]*\]\([^)]*\)/, ' ') # images
     text.gsub!(/\[([^\]]*)\]\([^)]*\)/, '\1') # links -> label
     text.gsub!(/^\s*>.*$/, ' ')         # blockquotes (the disclaimer lives here)
+    text.gsub!(/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/, ' ') # horizontal rules
     text.gsub!(/^\s*#{'#'}+\s*/, ' ')   # heading markers
+    text.gsub!(/^\s*\|.*$/, ' ')        # table rows
     text.gsub!(/[*_`~]/, ' ')           # inline emphasis
     text.gsub!(/\{:[^}]*\}/, ' ')       # kramdown attribute lists
     text.gsub!(/<[^>]+>/, ' ')          # stray html
@@ -41,7 +50,7 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     description = text
   end
 
-  next if description.empty?
+  return if description.empty?
 
   if description.length > MAX_LENGTH
     description = description[0, MAX_LENGTH].sub(/\s+\S*\z/, '') + '...'
