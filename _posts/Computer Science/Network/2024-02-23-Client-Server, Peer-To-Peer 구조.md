@@ -8,11 +8,10 @@ tags: [Network]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/88b4d5f2-e39f-40d4-ba8a-2387cc8b028b
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Network
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 개요
 
@@ -49,7 +48,6 @@ image:
 
 클라이언트-서버 트랜잭션은 네 단계로 구성된다.
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/8ab58539-82af-4478-bd0d-c5e3be6212f2)
 
 1. 클라이언트가 서비스를 필요로 할 때, 클라이언트는 한 개의 `요청 Request`을 서버로 보내는 것으로 트랜잭션을 개시한다.
     

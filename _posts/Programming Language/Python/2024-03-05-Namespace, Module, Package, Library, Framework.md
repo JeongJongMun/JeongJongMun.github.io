@@ -8,11 +8,10 @@ tags: [Python]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/8345af70-efa8-4ae7-add5-51d6e6a7d1dd
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Python
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## **Module**
 
@@ -56,7 +55,6 @@ test_module.hello()
 
 **패키지는 모듈의 묶음.**
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/f50b9c98-0608-4944-b089-b6a1001c90da){: width="500" height="500" .center}
 
 Package를 불러온다면, Module1.py, Module2.py, Module3.py를 모두 불러온 것임.
 

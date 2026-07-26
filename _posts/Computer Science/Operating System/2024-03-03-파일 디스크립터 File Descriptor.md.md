@@ -8,11 +8,10 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/3ae026eb-f51c-4a32-a61a-dd3854381147
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 파일 디스크립터 File Descriptor
 

@@ -8,11 +8,10 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/19965cce-9963-43d7-924c-94d42c262483
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 동적 메모리 할당/해제/설정 함수들
 
@@ -81,7 +80,6 @@ int *arr = (int *)malloc(sizeof(int) * 5); // 5 크기의 int 배열. 총 20바�
 int *i = (int*)malloc(sizeof(int));
 ```
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/0ee94ab1-676b-4b04-8c24-46a2c0b7abd1){: width="500" height="500" .center}
 
 ### 3. `free()`
 

@@ -8,18 +8,15 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/96e534ca-944f-487c-a5a1-f0998eba78bd
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 개요
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/ae96f309-1b59-41f1-8b84-9f4e9594f2f9)
-_가상화_
 
 가상화란 **물리적 컴퓨터 하드웨어**를 보다 효율적으로 활용할 수 있도록 해주는 **프로세스**이다.
 
@@ -33,8 +30,6 @@ e.g. 구글 클라우드, 네이버 클라우드들은 자신들의 데이터 �
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/5673eab5-ff05-4308-8b9f-0eb79b415e07)
-_VMware Virtualization Layer_
 
 하이퍼바이저는 가상화 계층(Virtualization Layer)을 구현해주는 소프트웨어이다.
 
@@ -48,7 +43,6 @@ e.g. VMware, VirtualBox
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/dcd43847-672d-42c5-9385-7e811f9b2346)
 
 가상화는 하드웨어에서 전체 컴퓨터를 재생성하며, 이는 다시 전체 OS를 실행한다. OS는 애플리케이션을 실행한다.
 
@@ -66,7 +60,6 @@ e.g. Docker, Kubernetes
 > 즉, 커널은 인터페이스로써 응용 프로그램 수행에 필요한 여러가지 서비스를 제공하고, 여러가지 하드웨어(CPU, 메모리) 등의 리소스를 관리하는 역할을 한다.
 {: .prompt-info }
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/7872ccbb-5a31-417f-91ff-820e8ef5b0ac){: width="250" height="250" .center}
 
 <br/>
 *참고*

@@ -8,11 +8,10 @@ tags: [Network]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/a9126340-e867-446f-ba8d-86701c1e1851
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Network
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## URL (Uniform Resource Locator)
 
@@ -44,7 +43,6 @@ $/path/picture.gif$는 **Path Name**이다.
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/033d0086-1a9b-41d9-92e9-955818ca7c4e)
 
 - HTTP/0.9: GET 메서드만 지원, HTTP 헤더 없음
 - HTTP/1.0: 메서드, 헤더 추가 (→ HTML 이외 다른 파일 전송 가능)
@@ -87,7 +85,6 @@ HTTP 메시지는 몇 줄의 **텍스트 정보로 구성**된다.
 
 ### 요청과 응답의 구조
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/7113ec2c-bcf6-4e90-be3a-1cdd17e883e2)
 
 ### Start Line
 

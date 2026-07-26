@@ -8,11 +8,10 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/2ccedd3a-2fce-4108-b88b-d5694e98d719
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 운영체제와 응용프로그램
 
@@ -22,8 +21,6 @@ image:
 운영체제(OS): Window, UNIX, Linux, Mac OS 등
 응용 프로그램: 한글, 엑셀, 메모장 등 컴퓨터 내의 다양한 프로그램
 ```
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/aa017608-3966-46d3-8669-3bfe1430eaf1){: width="250" height="250" .center}
-_운영체제와 응용프로그램_
 
 하드웨어를 관리하고, 컴퓨터 시스템의 자원들을 효율적으로 관리하며, 응용 프로그램과 하드웨어 간의 인터페이스로써 다른 응용 프로그램들이 유용한 작업을 할 수 있도록 환경을 제공해준다.
 
@@ -39,8 +36,6 @@ _운영체제와 응용프로그램_
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/6fffe91c-e8ae-4dbc-96e8-b6817fda60f0){: width="250" height="250" .center}
-_커널이 응용 소프트웨어를 컴퓨터 하드웨어와 연결한다._
 
 컴퓨터와 전원을 켜면 운영체제는 이와 동시에 수행된다. 소프트웨어가 컴퓨터 시스템에서 수행되기 위해서는 메모리에 그 프로그램이 올라가 있어야 한다. 마찬가지로 운영체제 자체도 소프트웨어로서 전원이 켜짐과 동시에 메모리에 올라가야 한다.
 

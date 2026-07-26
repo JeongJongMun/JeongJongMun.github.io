@@ -8,12 +8,10 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/c6e4aaa6-21e3-4a38-8835-39c444deb56d
-
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 가상 메모리 시스템
 
@@ -61,8 +59,6 @@ image:
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/4998b89b-a04e-4a5f-8d74-657c5253ed8c)
-_가상 메모리의 구성_
 
 가상 메모리는 크게 두 가지로 나뉜다.
 
@@ -118,8 +114,6 @@ _가상 메모리의 구성_
 
 메모리를 관리할 때, 가상 메모리 시스템에서 가상 주소는 물리적 주소나 스왑 영역 중 한 곳에 위치하며 메모리 관리자는 **가상 주소와 물리적 주소**를 **1대1 매핑 테이블**로 관리한다.
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/4c600baf-2ec0-40ca-9b33-878a72a86937)
-_메모리 매핑 테이블_
 
 **매핑 테이블로 가상 주소가 물리적 메모리의 어느 위치에 알 수 있다.**
 
@@ -135,8 +129,6 @@ _메모리 매핑 테이블_
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/2ed12375-88e8-41ce-a38e-2d414f24c696)
-_페이징_
 
 페이징 기법은 주소 공간을 같은 크기로 나누어 사용하는 기법이다.
 
@@ -159,8 +151,6 @@ _페이징_
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/a3ab7324-b8a0-42df-8783-84844a174e11)
-_세그멘테이션_
 
 프로그램을 `세그먼트`라는 논리적 단위로 나누어 관리한다. 각 세그먼트는 서로 다른 크기를 가질 수 있으며, 필요한 세그먼트만 메모리에 올려서 사용한다.
 

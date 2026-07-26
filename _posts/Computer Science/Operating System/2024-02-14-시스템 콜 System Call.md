@@ -8,11 +8,10 @@ tags: [Operating System]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/17607422-85bd-4fc2-b0bb-6465ab4d41fb
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Operating System
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 시스템 콜(System Call)
 
@@ -80,8 +79,6 @@ image:
 ## 시스템 콜의 간략한 과정
 
 ---
-![Image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/17607422-85bd-4fc2-b0bb-6465ab4d41fb)
-_System Call Process_
 1. 사용자 모드에 있는 응용 프로그램이 시스템 콜을 호출하여 커널의 기능을 사용할 수 있게 한다.
 2. 시스템 콜을 호출하면 사용자 모드에서 커널 모드로 전환된다.
 3. 커널에서 시스템 콜을 처리하면 커널 모드에서 사용자 모드로 되돌아가 작업을 계속한다.

@@ -8,17 +8,15 @@ tags: [Trouble Shooting]
 pin: false
 math: true
 mermaid: true
-image:
-  path: https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/9b2e2cd0-1ce7-4984-91c7-1563e1e9404b
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Trouble Shooting
 ---
+
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 ## 문제점
 
 ---
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/51c52012-70ce-43ae-937b-f4e44b348190)
 
 BFS 문제를 푸는 중에 나는 아래와 같이 C++ 코드를 작성했다.
 

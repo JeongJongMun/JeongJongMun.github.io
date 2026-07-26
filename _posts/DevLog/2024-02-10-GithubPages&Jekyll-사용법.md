@@ -10,8 +10,8 @@ math: true
 mermaid: true
 ---
 
-호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
-{: .notice--warning}
+> 호스팅으로 올려둔 이미지를 복구할 수가 없네요. 글이라도 도움되시길
+{: .prompt-warning }
 
 > 윈도우에서 Jekyll과 GitHub Pages를 이용하여 블로그를 만들어보고, 그 내용을 정리한 글입니다.  
 > Github, CMD는 이미 알고 있다고 가정하고 진행합니다.
@@ -23,14 +23,8 @@ mermaid: true
 `x86 = 32bit, x64 = 64bit`  
 윈도우에서 파일을 받으니 안전하지 않다 뜨는데, 그냥 진행합시다.
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/8bf295c6-7caa-496f-9d1c-93f9254632a5){: width="500" height="500" .center} 
-_위 체크박스가 보이면 모두 체크 후 진행_
 분
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/353c9fbb-d21b-4cb9-b0d5-fce66be95be6){: width="500" height="500" .center}
-_설치 완료후 위 화면에서 1 + Enter_
 
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/9b3808a0-511b-482d-95dd-7af942de8eb5){: width="500" height="500" .center}
-_설치 완료 시 보이는 창_
 
 위 사진까지 왔다면 이제 커맨드 창을 열어 `ruby -v`를 입력하여 루비 버전이 나와야 설치가 완료된 것입니다.
 
@@ -78,8 +72,6 @@ bundle exec jekyll serve
 ```
 
 `http://127.0.0.1:4000/` 로 접속하여 사이트가 정상적으로 뜨는지 확인합니다.
-![image](https://github.com/JeongJongMun/JeongJongMun.github.io/assets/101979073/d8106137-073a-4169-b2cd-a392da752f94){: width="500" height="500" .center}
-_위 사진과 같이 나온다면, 로컬에서 테스트 성공입니다._
 
 ## 6. Jekyll 테마 다운로드
 
