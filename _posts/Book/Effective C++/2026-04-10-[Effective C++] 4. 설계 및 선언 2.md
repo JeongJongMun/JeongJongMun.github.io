@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 4. 설계 및 선언 [2/4]"
+description: "값에 의한 전달 대신 상수 객체 참조자로 전달해야 하는 이유와, 함수에서 지역 객체의 참조자를 반환하면 안 되는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-04-10 12:00:00 +0800
 categories: [Book, Effective C++]

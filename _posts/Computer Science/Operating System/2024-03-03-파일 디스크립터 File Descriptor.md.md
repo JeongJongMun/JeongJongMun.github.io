@@ -1,5 +1,6 @@
 ---
 title: "파일 디스크립터 File Descriptor"
+description: "유닉스에서 프로세스가 파일에 접근할 때 쓰는 파일 디스크립터의 개념과, 커널이 이를 관리하는 방식을 정리했습니다."
 writer: Langerak
 date: 2024-03-03 12:00:00 +0800
 categories: [Computer Science, Operating System]

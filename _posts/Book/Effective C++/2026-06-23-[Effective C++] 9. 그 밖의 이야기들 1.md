@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 9. 그 밖의 이야기들 [1/2]"
+description: "컴파일러 경고를 무시하면 안 되는 이유와, 표준 라이브러리를 보완하는 Boost 라이브러리를 정리했습니다."
 writer: Langerak
 date: 2026-06-23 12:00:00 +0800
 categories: [Book, Effective C++]

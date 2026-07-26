@@ -1,5 +1,6 @@
 ---
 title: "Exception: 위치를 기록하는 동안 액세스 위반이 발생했습니다. (0 < nx ≤ n)"
+description: "C++에서 0 < nx <= n 형태의 연속 비교가 의도와 다르게 동작해 발생한 액세스 위반 오류의 원인과 해결 방법을 정리했습니다."
 writer: Langerak
 date: 2024-03-07 12:00:00 +0800
 categories: [Trouble Shooting]

@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 7. 템플릿과 일반화 프로그래밍 [3/4]"
+description: "호환되는 모든 타입을 받아들이는 멤버 함수 템플릿과, 타입 변환이 필요할 때 비멤버 함수를 클래스 템플릿 안에 정의하는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-05-30 12:00:00 +0800
 categories: [Book, Effective C++]

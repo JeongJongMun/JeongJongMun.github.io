@@ -1,5 +1,6 @@
 ---
 title: "메모리 단편화 Memory Fragmentation"
+description: "내부 단편화와 외부 단편화가 생기는 원인과, 통합·압축·페이징으로 이를 해결하는 방법을 정리했습니다."
 writer: Langerak
 date: 2024-02-18 12:00:00 +0800
 categories: [Computer Science, Operating System]

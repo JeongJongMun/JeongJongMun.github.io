@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 7. 템플릿과 일반화 프로그래밍 [4/4]"
+description: "타입 정보를 컴파일 타임에 활용하는 특성정보(traits) 클래스와, 템플릿 메타프로그래밍의 개념을 정리했습니다."
 writer: Langerak
 date: 2026-06-03 12:00:00 +0800
 categories: [Book, Effective C++]

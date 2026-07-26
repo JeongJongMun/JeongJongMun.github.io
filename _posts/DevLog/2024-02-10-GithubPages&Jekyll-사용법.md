@@ -1,5 +1,6 @@
 ---
 title: "윈도우에서 GitHub Pages와 Jekyll로 블로그 만들기"
+description: "윈도우에서 Ruby와 Jekyll을 설치해 GitHub Pages 블로그를 만들고 테마를 적용하기까지의 과정을 정리했습니다."
 writer: Langerak
 date: 2024-02-10 11:33:00 +0800
 categories: [개발 일지]

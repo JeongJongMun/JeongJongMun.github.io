@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 5. 구현 [3/3]"
+description: "인라인 함수의 이점과 대가를 따져보고, 파일 사이의 컴파일 의존성을 줄이는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-05-04 12:00:00 +0800
 categories: [Book, Effective C++]

@@ -1,5 +1,6 @@
 ---
 title: "HTTP: Hypertext Transfer Protocol"
+description: "URL의 구조와 HTTP의 특성, 그리고 요청과 응답 메시지가 어떤 구조로 구성되는지를 정리했습니다."
 writer: Langerak
 date: 2024-03-04 12:00:00 +0800
 categories: [Computer Science, Network]

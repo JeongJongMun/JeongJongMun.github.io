@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 4. 설계 및 선언 [3/4]"
+description: "데이터 멤버를 private에 두어야 하는 이유와, 캡슐화를 높이기 위해 멤버 함수보다 비멤버 비프렌드 함수를 택하는 기준을 정리했습니다."
 writer: Langerak
 date: 2026-04-20 12:00:00 +0800
 categories: [Book, Effective C++]

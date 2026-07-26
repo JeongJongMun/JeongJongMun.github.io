@@ -1,5 +1,6 @@
 ---
 title: "연결리스트 LinkedList"
+description: "연결 리스트의 종류와 배열 대비 장단점, 캐시 적중률 문제, 그리고 사이클 감지와 역순 뒤집기 알고리즘을 정리했습니다."
 writer: Langerak
 date: 2025-03-21 13:00:00 +0800
 categories: [Computer Science, Data Structure]

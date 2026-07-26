@@ -1,5 +1,6 @@
 ---
 title: "Github Action과 Self-hosted runner로 언리얼 엔진 CI 구축"
+description: "Self-hosted runner와 GitHub Actions로 언리얼 프로젝트를 자동 패키징하고 구글 드라이브에 업로드하는 CI를 구축한 과정을 정리했습니다."
 writer: Langerak
 date: 2025-10-06 12:00:00 +0800
 categories: [Game Engine, Unreal]

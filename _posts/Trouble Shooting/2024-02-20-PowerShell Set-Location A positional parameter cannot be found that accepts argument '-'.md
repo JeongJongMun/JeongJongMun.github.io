@@ -1,5 +1,6 @@
 ---
 title: "PowerShell: Set-Location: A positional parameter cannot be found that accepts argument '-'"
+description: "PowerShell에서 하이픈이 포함된 경로로 이동할 때 발생하는 오류의 원인과, 따옴표로 감싸 해결한 방법을 정리했습니다."
 writer: Langerak
 date: 2024-02-20 12:00:00 +0800
 categories: [Trouble Shooting]

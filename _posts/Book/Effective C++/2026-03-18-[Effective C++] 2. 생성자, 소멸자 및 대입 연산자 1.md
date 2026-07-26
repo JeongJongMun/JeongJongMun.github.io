@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [1/4]"
+description: "컴파일러가 몰래 만들어내는 생성자·소멸자·대입 연산자의 동작과, 이들이 필요 없을 때 생성을 막는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-03-18 12:00:00 +0800
 categories: [Book, Effective C++]

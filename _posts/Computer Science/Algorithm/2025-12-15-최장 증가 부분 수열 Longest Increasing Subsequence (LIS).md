@@ -1,5 +1,6 @@
 ---
 title: "최장 증가 부분 수열 Longest Increasing Subsequence (LIS)"
+description: "최장 증가 부분 수열을 동적 계획법으로 구하는 방법과, 이분 탐색을 이용해 O(N log N)으로 줄이는 방법을 정리했습니다."
 writer: Langerak
 date: 2025-12-15 12:00:00 +0800
 categories: [Computer Science, Algorithm]

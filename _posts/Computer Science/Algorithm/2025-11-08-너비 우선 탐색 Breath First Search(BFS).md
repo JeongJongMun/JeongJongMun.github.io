@@ -1,5 +1,6 @@
 ---
 title: "너비 우선 탐색 Breath First Search(BFS)"
+description: "너비 우선 탐색으로 최단 경로를 찾는 원리와 큐를 이용한 구현, 백준 미로 탐색 문제 풀이를 정리했습니다."
 writer: Langerak
 date: 2025-11-08 12:00:00 +0800
 categories: [Computer Science, Algorithm]

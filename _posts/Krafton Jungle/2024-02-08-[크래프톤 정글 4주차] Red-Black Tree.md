@@ -1,5 +1,6 @@
 ---
 title: "[크래프톤 정글 4주차] Red-Black Tree"
+description: "크래프톤 정글 4주차에 C언어로 Red-Black Tree를 직접 구현하며 학습한 내용과 회고를 정리했습니다."
 writer: Langerak
 date: 2024-02-08 20:50:00 +0800
 categories: [Krafton Jungle]

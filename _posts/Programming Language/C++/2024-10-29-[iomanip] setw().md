@@ -1,5 +1,6 @@
 ---
 title: "<iomanip> setw()"
+description: "출력 데이터의 너비를 지정해 정렬해 주는 iomanip의 setw 함수 사용법과 left·right 정렬 옵션을 정리했습니다."
 writer: Langerak
 date: 2024-10-29 12:00:00 +0800
 categories: [Programming Language, C++]

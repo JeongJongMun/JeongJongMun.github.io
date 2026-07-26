@@ -1,5 +1,6 @@
 ---
 title: "가상 메모리 Virtual Memory"
+description: "물리 메모리의 한계를 넘기 위한 가상 메모리의 원리와 구현 방식, 스왑 공간의 역할과 장단점을 정리했습니다."
 writer: Langerak
 date: 2024-02-15 12:01:00 +0800
 categories: [Computer Science, Operating System]

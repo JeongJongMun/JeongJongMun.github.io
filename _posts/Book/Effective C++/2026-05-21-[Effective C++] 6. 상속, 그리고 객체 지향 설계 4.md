@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 6. 상속, 그리고 객체 지향 설계 [4/4]"
+description: "private 상속이 is-a가 아닌 구현 관계를 뜻한다는 점과, 다중 상속을 신중하게 써야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-05-21 12:00:00 +0800
 categories: [Book, Effective C++]

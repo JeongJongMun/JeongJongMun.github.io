@@ -1,5 +1,6 @@
 ---
 title: "Client-Server / Peer-To-Peer 구조"
+description: "클라이언트-서버 구조와 피어-투-피어 구조가 각각 어떻게 동작하는지와 두 방식의 특징을 비교했습니다."
 writer: Langerak
 date: 2024-02-23 12:00:00 +0800
 categories: [Computer Science, Network]

@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 6. 상속, 그리고 객체 지향 설계 [3/4]"
+description: "상속받은 비가상 함수와 기본 매개변수 값을 재정의하면 안 되는 이유와, has-a 관계를 객체 합성으로 모형화하는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-05-16 12:00:00 +0800
 categories: [Book, Effective C++]

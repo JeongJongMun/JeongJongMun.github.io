@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 5. 구현 [1/3]"
+description: "변수 정의를 최대한 늦춰 불필요한 생성 비용을 줄이는 방법과, 캐스팅을 남용하면 안 되는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-04-29 12:00:00 +0800
 categories: [Book, Effective C++]
