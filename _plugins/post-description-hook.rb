@@ -1,12 +1,10 @@
 #!/usr/bin/env ruby
 #
-# Give every post its own description.
+# Give every post a description.
 #
-# Most posts open with the same standing disclaimer, so anything derived from
-# the post body (jekyll-seo-tag's meta description, feeds, search snippets)
-# ended up identical across ~100 posts. This strips the boilerplate listed in
-# `site.description_boilerplate` and, when nothing meaningful is left, builds
-# a description from the first real content of the post.
+# Posts normally declare their own `description` in front matter. When one
+# doesn't, this builds a readable summary from the start of the post instead
+# of letting jekyll-seo-tag fall back to raw markdown.
 #
 # The post body itself is untouched; only `post.data['description']` is set.
 
@@ -16,19 +14,11 @@ MAX_LENGTH = 200
 # that list posts (home, related posts) see the same description as the post's
 # own meta tags. A per-post :pre_render hook fires too late for those lists.
 Jekyll::Hooks.register :site, :post_read do |site|
-  site.posts.docs.each { |post| set_post_description(post, site) }
+  site.posts.docs.each { |post| set_post_description(post) }
 end
 
-def set_post_description(post, site)
-  boilerplate = site.config['description_boilerplate'] || []
-
-  strip_boilerplate = lambda do |text|
-    boilerplate.reduce(text.to_s) { |acc, phrase| acc.gsub(phrase, ' ') }
-               .gsub(/\s+/, ' ')
-               .strip
-  end
-
-  description = strip_boilerplate.call(post.data['description'])
+def set_post_description(post)
+  description = post.data['description'].to_s.gsub(/\s+/, ' ').strip
 
   if description.empty?
     # Markdown source is cheaper and cleaner than the rendered HTML here:
@@ -38,16 +28,15 @@ def set_post_description(post, site)
     text.gsub!(/^\s{4,}\S.*$/, ' ')     # indented code
     text.gsub!(/!\[[^\]]*\]\([^)]*\)/, ' ') # images
     text.gsub!(/\[([^\]]*)\]\([^)]*\)/, '\1') # links -> label
-    text.gsub!(/^\s*>.*$/, ' ')         # blockquotes (the disclaimer lives here)
+    text.gsub!(/^\s*>.*$/, ' ')         # blockquotes
     text.gsub!(/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/, ' ') # horizontal rules
     text.gsub!(/^\s*#{'#'}+\s*/, ' ')   # heading markers
     text.gsub!(/^\s*\|.*$/, ' ')        # table rows
     text.gsub!(/[*_`~]/, ' ')           # inline emphasis
     text.gsub!(/\{:[^}]*\}/, ' ')       # kramdown attribute lists
     text.gsub!(/<[^>]+>/, ' ')          # stray html
-    text = strip_boilerplate.call(text)
 
-    description = text
+    description = text.gsub(/\s+/, ' ').strip
   end
 
   return if description.empty?

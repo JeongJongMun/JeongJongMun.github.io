@@ -1,26 +1,14 @@
 {%- comment -%}
   Get post description or generate it from the post content.
 
-  `site.description_boilerplate` lists phrases that open most posts (e.g. a
-  standing disclaimer). They are stripped from both the front matter
-  description and the generated one, so posts don't all end up sharing a
-  single identical description in meta tags, feeds and search snippets.
-  The post body itself is never affected.
+  `_plugins/post-description-hook.rb` normally fills `post.description` in
+  before anything renders, so this include just formats it. The content
+  fallback below stays for the case where no description is available.
 {%- endcomment -%}
 
-{%- capture declared -%}
-  {%- assign declared_source = post.description | default: '' -%}
-
-  {%- for phrase in site.description_boilerplate -%}
-    {%- assign declared_source = declared_source | remove: phrase -%}
-  {%- endfor -%}
-
-  {{- declared_source | strip -}}
-{%- endcapture -%}
-
 {%- capture description -%}
-  {%- if declared != empty -%}
-    {{- declared -}}
+  {%- if post.description and post.description != empty -%}
+    {{- post.description -}}
   {%- else -%}
     {% comment %}
       Remove the line number of the code snippet.
@@ -32,16 +20,7 @@
       {%- assign content = content | replace: '</td><td class="rouge-code">', '</td> --><td class="rouge-code">' -%}
     {%- endif -%}
 
-    {%- assign content = content | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines -%}
-
-    {%- for phrase in site.description_boilerplate -%}
-      {%- assign content = content | remove: phrase -%}
-    {%- endfor -%}
-
-    {%- comment -%} Collapse the whitespace left behind by the removals. {%- endcomment -%}
-    {%- assign content = content | replace: '  ', ' ' | replace: '  ', ' ' -%}
-
-    {{- content -}}
+    {{- content | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines -}}
   {%- endif -%}
 {%- endcapture -%}
 
