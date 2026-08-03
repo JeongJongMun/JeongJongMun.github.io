@@ -1,5 +1,6 @@
 ---
 title: "깊이 우선 탐색 Depth First Search(DFS)"
+slug: depth-first-search-dfs
 description: "깊이 우선 탐색의 동작 과정과 시간 복잡도, 재귀와 스택을 이용한 구현 방법을 정리했습니다."
 writer: Langerak
 date: 2025-11-07 12:00:00 +0800

@@ -1,5 +1,6 @@
 ---
 title: "Context Switching, PCB, Interrupt"
+slug: context-switching-pcb-interrupt
 description: "CPU가 프로세스를 교체할 때 문맥을 저장하고 복원하는 과정과, PCB의 역할 및 인터럽트 처리 흐름을 정리했습니다."
 writer: Langerak
 date: 2024-03-02 12:00:00 +0800

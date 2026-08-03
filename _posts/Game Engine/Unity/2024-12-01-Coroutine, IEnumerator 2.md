@@ -1,5 +1,6 @@
 ---
 title: "Coroutine, IEnumerator 2"
+slug: coroutine-ienumerator-2
 description: "Coroutine과 YieldInstruction 클래스의 관계, WaitForSeconds에 대한 오해, 그리고 코루틴 정리와 메모리 최적화를 다룹니다."
 writer: Langerak
 date: 2024-12-01 13:00:00 +0800

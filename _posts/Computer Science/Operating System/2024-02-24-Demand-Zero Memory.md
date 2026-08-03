@@ -1,5 +1,6 @@
 ---
 title: "Demand-Zero Memory"
+slug: demand-zero-memory
 description: "필요할 때 할당하고 0으로 초기화하는 Demand-Zero Memory의 개념과, 리눅스 메모리 시스템의 지연 할당 방식을 정리했습니다."
 writer: Langerak
 date: 2024-02-24 12:00:00 +0800

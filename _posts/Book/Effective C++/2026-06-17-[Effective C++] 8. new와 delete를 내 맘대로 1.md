@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 8. new와 delete를 내 맘대로 [1/2]"
+slug: effective-cpp-8-new-delete-1
 description: "메모리가 부족할 때 호출되는 new 처리자의 동작 원리와, operator new·delete를 직접 교체해야 하는 상황을 정리했습니다."
 writer: Langerak
 date: 2026-06-17 12:00:00 +0800

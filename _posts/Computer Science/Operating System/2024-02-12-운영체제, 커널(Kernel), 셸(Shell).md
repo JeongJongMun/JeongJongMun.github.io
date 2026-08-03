@@ -1,5 +1,6 @@
 ---
 title: "운영체제, 커널(Kernel), 셸(Shell)"
+slug: operating-system-kernel-shell
 description: "운영체제의 목적과 역할, 하드웨어를 관리하는 커널과 사용자 명령을 해석하는 셸의 차이를 정리했습니다."
 writer: Langerak
 date: 2024-02-12 12:00:00 +0800

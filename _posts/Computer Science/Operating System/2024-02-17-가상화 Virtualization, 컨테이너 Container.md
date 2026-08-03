@@ -1,5 +1,6 @@
 ---
 title: "가상화 Virtualization, 컨테이너 Container"
+slug: virtualization-container
 description: "하드웨어를 여러 가상 머신으로 나누는 가상화와 하이퍼바이저의 역할, 그리고 컨테이너화와의 차이를 정리했습니다."
 writer: Langerak
 date: 2024-02-17 12:00:00 +0800

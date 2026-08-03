@@ -1,5 +1,6 @@
 ---
 title: "동적 메모리 할당: malloc(), void*, calloc(), realloc(), free(), memset()"
+slug: dynamic-memory-allocation-malloc-calloc-realloc-free
 description: "malloc·calloc·realloc·free·memset의 동작과 void 포인터의 역할 등 C의 동적 메모리 할당 함수들을 정리했습니다."
 writer: Langerak
 date: 2024-02-28 12:00:00 +0800

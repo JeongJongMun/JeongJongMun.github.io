@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 1. C++에 왔으면 C++의 법을 따릅시다 [1/2]"
+slug: effective-cpp-1-accustoming-1
 description: "C++를 여러 하위 언어의 연합체로 바라보는 관점과, #define 대신 const·enum·inline을 써야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-03-11 12:00:00 +0800

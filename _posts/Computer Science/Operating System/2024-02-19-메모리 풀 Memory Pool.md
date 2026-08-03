@@ -1,5 +1,6 @@
 ---
 title: "메모리 풀 Memory Pool"
+slug: memory-pool
 description: "미리 할당한 메모리를 고정 크기 블록으로 나눠 쓰는 메모리 풀의 원리와, 단편화를 줄이는 효과 및 한계를 정리했습니다."
 writer: Langerak
 date: 2024-02-19 12:00:00 +0800

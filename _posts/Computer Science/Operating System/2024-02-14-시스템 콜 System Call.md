@@ -1,5 +1,6 @@
 ---
 title: "시스템 콜 System Call"
+slug: system-call
 description: "응용 프로그램이 커널에 서비스를 요청하는 시스템 콜의 개념과, 모드 전환이 일어나는 과정 및 유형을 정리했습니다."
 writer: Langerak
 date: 2024-02-14 12:00:00 +0800

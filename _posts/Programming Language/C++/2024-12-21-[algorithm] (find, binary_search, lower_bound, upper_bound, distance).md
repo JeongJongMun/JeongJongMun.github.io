@@ -1,5 +1,6 @@
 ---
 title: "[algorithm] (find, binary_search, lower_bound, upper_bound, distance)"
+slug: algorithm-find-binary-search-lower-upper-bound
 description: "C++ algorithm 헤더의 find·binary_search·lower_bound·upper_bound·distance 함수의 동작과 차이를 정리했습니다."
 writer: Langerak
 date: 2024-12-21 12:00:00 +0800

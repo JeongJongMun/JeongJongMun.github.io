@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [4/4]"
+slug: effective-cpp-2-constructors-destructors-4
 description: "operator=에서 자가대입을 안전하게 처리하는 방법과, 객체를 복사할 때 상속받은 부분까지 빠짐없이 복사해야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-03-29 12:00:00 +0800

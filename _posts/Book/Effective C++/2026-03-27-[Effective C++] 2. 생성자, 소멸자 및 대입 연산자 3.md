@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [3/4]"
+slug: effective-cpp-2-constructors-destructors-3
 description: "생성자와 소멸자 안에서 가상 함수를 호출하면 안 되는 이유와, 대입 연산자가 *this의 참조자를 반환해야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-03-23 12:00:00 +0800

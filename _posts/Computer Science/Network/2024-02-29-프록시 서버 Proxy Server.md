@@ -1,5 +1,6 @@
 ---
 title: "프록시 서버 Proxy Server"
+slug: proxy-server
 description: "클라이언트와 서버 사이에서 통신을 중계하는 프록시 서버의 작동 방식과, 익명성·캐싱·접근 제어 등의 사용 목적을 정리했습니다."
 writer: Langerak
 date: 2024-02-29 12:00:00 +0800

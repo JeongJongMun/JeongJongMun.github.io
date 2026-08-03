@@ -1,5 +1,6 @@
 ---
 title: "최소 신장 트리 Minimum Spanning Tree (MST), 프림 알고리즘 Prim's Algorithm"
+slug: minimum-spanning-tree-prim
 description: "최소 신장 트리의 개념과, 시작점에서 가장 가까운 노드를 하나씩 추가해 나가는 프림 알고리즘을 정리했습니다."
 writer: Langerak
 date: 2025-11-24 12:00:00 +0800

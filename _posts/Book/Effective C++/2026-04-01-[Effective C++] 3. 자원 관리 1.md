@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 3. 자원 관리 [1/2]"
+slug: effective-cpp-3-resource-management-1
 description: "메모리·파일·뮤텍스 같은 자원을 객체로 감싸 관리하는 RAII 기법과, 자원 관리 클래스의 복사 동작을 설계하는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-04-01 12:00:00 +0800

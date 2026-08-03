@@ -1,5 +1,6 @@
 ---
 title: "Coroutine, IEnumerator 1"
+slug: coroutine-ienumerator-1
 description: "코루틴이 실행을 멈추고 재개하는 원리와, 그 바탕이 되는 IEnumerator와 반복자 패턴을 정리했습니다."
 writer: Langerak
 date: 2024-12-01 12:00:00 +0800

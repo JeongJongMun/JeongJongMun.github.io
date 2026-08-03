@@ -1,5 +1,6 @@
 ---
 title: "이분 그래프 Bipartite Graph"
+slug: bipartite-graph
 description: "이분 그래프의 정의와, 홀수 길이 사이클이 없다는 성질을 이용해 이분 그래프인지 판별하는 방법을 정리했습니다."
 writer: Langerak
 date: 2025-12-03 12:00:00 +0800

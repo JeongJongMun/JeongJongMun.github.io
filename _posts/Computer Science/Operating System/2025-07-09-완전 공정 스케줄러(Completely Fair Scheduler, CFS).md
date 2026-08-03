@@ -1,5 +1,6 @@
 ---
 title: "완전 공정 스케줄러(Completely Fair Scheduler, CFS)"
+slug: completely-fair-scheduler-cfs
 description: "리눅스 완전 공정 스케줄러가 가상 실행 시간과 레드 블랙 트리를 이용해 CPU를 공정하게 배분하는 과정을 정리했습니다."
 writer: Langerak
 date: 2025-07-09 12:00:00 +0800

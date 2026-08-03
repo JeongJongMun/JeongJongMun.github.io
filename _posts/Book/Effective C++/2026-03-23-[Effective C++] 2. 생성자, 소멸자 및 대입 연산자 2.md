@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 2. 생성자, 소멸자 및 대입 연산자 [2/4]"
+slug: effective-cpp-2-constructors-destructors-2
 description: "다형성을 가진 기본 클래스에 가상 소멸자가 필요한 이유와, 소멸자에서 예외가 빠져나가지 않도록 처리하는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-03-23 12:00:00 +0800

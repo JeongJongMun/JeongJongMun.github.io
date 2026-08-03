@@ -1,5 +1,6 @@
 ---
 title: "[PintOS] Project1 - Threads"
+slug: pintos-project-1-threads
 description: "KAIST PintOS 프로젝트 1의 깃북을 해석하며 스레드 구조와 동기화, Alarm Clock과 우선순위 스케줄링 구현을 정리했습니다."
 writer: Langerak
 date: 2024-06-6 12:00:00 +0800

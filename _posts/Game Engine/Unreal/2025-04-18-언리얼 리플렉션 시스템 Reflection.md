@@ -1,5 +1,6 @@
 ---
 title: "언리얼 리플렉션 시스템 Reflection"
+slug: unreal-reflection-system
 description: "언리얼이 C++에 자체 구축한 리플렉션 시스템의 동작 원리와, UCLASS·UPROPERTY 같은 매크로의 역할을 정리했습니다."
 writer: Langerak
 date: 2025-04-18 12:00:00 +0800

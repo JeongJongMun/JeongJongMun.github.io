@@ -1,5 +1,6 @@
 ---
 title: "Namespace, Module, Package, Library, Framework"
+slug: namespace-module-package-library-framework
 description: "파이썬의 모듈과 네임스페이스, 패키지, 라이브러리, 프레임워크가 각각 무엇을 뜻하는지 구분해 정리했습니다."
 writer: Langerak
 date: 2024-03-05 12:00:00 +0800

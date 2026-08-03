@@ -1,5 +1,6 @@
 ---
 title: "성능을 높히는 데이터 지향 설계 (Data Oriented Design, DOD)"
+slug: data-oriented-design-dod
 description: "객체 지향 설계와 데이터 지향 설계의 차이를 메모리 캐싱 관점에서 비교하고, 대규모 데이터 처리에서 성능이 달라지는 이유를 정리했습니다."
 writer: Langerak
 date: 2025-9-9 12:00:00 +0800

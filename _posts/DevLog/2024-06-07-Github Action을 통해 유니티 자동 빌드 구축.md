@@ -1,5 +1,6 @@
 ---
 title: "Github Action을 통해 유니티 자동 빌드 구축"
+slug: unity-auto-build-with-github-actions
 description: "GitHub Actions로 유니티 빌드를 자동화하는 과정과, 라이선스 정보를 Secrets에 등록해 워크플로를 구성하는 방법을 정리했습니다."
 writer: Langerak
 date: 2024-06-7 12:00:00 +0800

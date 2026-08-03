@@ -1,5 +1,6 @@
 ---
 title: "플로이드 워셜 Floyd Warshall"
+slug: floyd-warshall
 description: "모든 노드 쌍의 최단 경로를 동적 계획법으로 구하는 플로이드 워셜 알고리즘과 음수 사이클 판별 방법을 정리했습니다."
 writer: Langerak
 date: 2025-11-18 12:00:00 +0800

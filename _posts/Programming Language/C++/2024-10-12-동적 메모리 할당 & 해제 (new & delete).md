@@ -1,5 +1,6 @@
 ---
 title: "동적 메모리 할당 & 해제 (new & delete)"
+slug: new-delete
 description: "C++에서 동적 메모리를 할당하고 해제하는 new와 delete의 사용법과, 배열 및 다차원 배열에서의 주의점을 정리했습니다."
 writer: Langerak
 date: 2024-10-12 12:00:00 +0800

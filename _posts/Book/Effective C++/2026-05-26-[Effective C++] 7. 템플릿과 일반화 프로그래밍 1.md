@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 7. 템플릿과 일반화 프로그래밍 [1/4]"
+slug: effective-cpp-7-templates-1
 description: "템플릿의 암시적 인터페이스와 컴파일 타임 다형성 개념, 그리고 typename이 갖는 두 가지 의미를 정리했습니다."
 writer: Langerak
 date: 2026-05-26 12:00:00 +0800

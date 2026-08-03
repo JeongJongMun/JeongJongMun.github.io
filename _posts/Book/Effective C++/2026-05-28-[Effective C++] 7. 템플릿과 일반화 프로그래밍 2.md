@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 7. 템플릿과 일반화 프로그래밍 [2/4]"
+slug: effective-cpp-7-templates-2
 description: "템플릿으로 만든 기본 클래스의 이름에 접근하는 방법과, 매개변수에 독립적인 코드를 분리해 코드 부풀림을 줄이는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-05-28 12:00:00 +0800

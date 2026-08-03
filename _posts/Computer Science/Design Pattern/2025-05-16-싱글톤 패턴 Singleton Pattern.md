@@ -1,5 +1,6 @@
 ---
 title: "싱글톤 패턴 Singleton Pattern"
+slug: singleton-pattern
 description: "인스턴스를 하나로 제한하는 싱글톤 패턴의 개념과 유니티에서의 구현 방법, 그리고 남용했을 때 생기는 문제점을 정리했습니다."
 writer: Langerak
 date: 2025-05-16 12:00:00 +0800

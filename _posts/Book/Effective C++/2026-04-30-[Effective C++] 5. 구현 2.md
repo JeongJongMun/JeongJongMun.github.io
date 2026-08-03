@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 5. 구현 [2/3]"
+slug: effective-cpp-5-implementations-2
 description: "내부 객체의 핸들을 반환할 때 생기는 캡슐화 문제와, 예외 안전성을 확보하기 위한 보장 수준을 정리했습니다."
 writer: Langerak
 date: 2026-04-30 12:00:00 +0800

@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 4. 설계 및 선언 [4/4]"
+slug: effective-cpp-4-designs-declarations-4
 description: "모든 매개변수에 타입 변환이 필요할 때 비멤버 함수를 써야 하는 이유와, 예외를 던지지 않는 swap을 지원하는 방법을 정리했습니다."
 writer: Langerak
 date: 2026-04-25 12:00:00 +0800

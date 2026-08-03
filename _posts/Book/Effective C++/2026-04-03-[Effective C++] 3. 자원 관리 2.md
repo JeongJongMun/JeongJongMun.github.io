@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 3. 자원 관리 [2/2]"
+slug: effective-cpp-3-resource-management-2
 description: "자원 관리 클래스에서 원시 자원에 접근하는 방법과, new·delete 형태를 맞추고 스마트 포인터 생성을 별도 문장으로 분리해야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-04-03 12:00:00 +0800

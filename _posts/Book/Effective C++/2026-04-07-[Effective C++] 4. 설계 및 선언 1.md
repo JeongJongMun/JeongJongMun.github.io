@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 4. 설계 및 선언 [1/4]"
+slug: effective-cpp-4-designs-declarations-1
 description: "제대로 쓰기엔 쉽고 잘못 쓰기엔 어려운 인터페이스를 설계하는 원칙과, 클래스를 하나의 타입으로 보고 설계할 때 점검할 항목을 정리했습니다."
 writer: Langerak
 date: 2026-04-07 12:00:00 +0800

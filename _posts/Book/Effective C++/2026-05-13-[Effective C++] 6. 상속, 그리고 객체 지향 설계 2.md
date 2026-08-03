@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 6. 상속, 그리고 객체 지향 설계 [2/4]"
+slug: effective-cpp-6-inheritance-2
 description: "인터페이스 상속과 구현 상속의 차이를 구분하는 기준과, 가상 함수를 대신할 수 있는 설계 대안들을 정리했습니다."
 writer: Langerak
 date: 2026-05-13 12:00:00 +0800

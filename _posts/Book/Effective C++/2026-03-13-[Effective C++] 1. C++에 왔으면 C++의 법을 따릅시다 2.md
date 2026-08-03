@@ -1,5 +1,6 @@
 ---
 title: "[Effective C++] 1. C++에 왔으면 C++의 법을 따릅시다 [2/2]"
+slug: effective-cpp-1-accustoming-2
 description: "const로 의미적 제약을 거는 방법과 객체를 쓰기 전에 반드시 초기화해야 하는 이유를 정리했습니다. C++23의 명시적 객체 매개변수도 함께 다룹니다."
 writer: Langerak
 date: 2026-03-13 12:00:00 +0800
