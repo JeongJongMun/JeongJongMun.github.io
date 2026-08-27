@@ -1,7 +1,7 @@
 ---
 title: "[Effective C++] 8. new와 delete를 내 맘대로 [2/2]"
 slug: effective-cpp-8-new-delete-2
-description: "operator new·delete를 작성할 때 지켜야 할 관례와, 위치지정 new를 만들 때 짝이 되는 delete도 함께 준비해야 하는 이유를 정리했습니다."
+description: "operator new/delete를 작성할 때 지켜야 할 관례와, 위치지정 new를 만들 때 짝이 되는 delete도 함께 준비해야 하는 이유를 정리했습니다."
 writer: Langerak
 date: 2026-06-18 12:00:00 +0800
 categories: [Book, Effective C++]

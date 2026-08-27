@@ -1,7 +1,7 @@
 ---
 title: "근거리 통신망 Local Area Network, LAN"
 slug: local-area-network-lan
-description: "제한된 영역의 기기를 연결하는 근거리 통신망의 특징과, 클라이언트-서버형·피어투피어형 LAN의 차이를 정리했습니다."
+description: "제한된 영역의 기기를 연결하는 근거리 통신망의 특징과, 클라이언트-서버형과 피어투피어형 LAN의 차이를 정리했습니다."
 writer: Langerak
 date: 2024-02-25 12:00:00 +0800
 categories: [Computer Science, Network]
