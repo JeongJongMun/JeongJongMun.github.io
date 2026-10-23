@@ -9,6 +9,7 @@ tags: [Krafton Jungle]
 pin: false
 math: true
 mermaid: true
+published: false
 ---
 
 ## 주간 요약
