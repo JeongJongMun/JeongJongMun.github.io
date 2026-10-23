@@ -526,3 +526,34 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     }
   }
 }
+
+/* desktop: collapsible sidebar (state is set on <html> before paint) */
+$sidebar-collapsed: 'sidebar-collapsed';
+
+@include bp.lg {
+  #sidebar,
+  #main-wrapper {
+    transition:
+      transform 0.3s ease,
+      margin-left 0.3s ease,
+      visibility 0.3s;
+  }
+
+  [#{$sidebar-collapsed}] {
+    #sidebar {
+      transform: translateX(-100%);
+      visibility: hidden;
+    }
+
+    #main-wrapper {
+      margin-left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sidebar,
+    #main-wrapper {
+      transition: none;
+    }
+  }
+}

@@ -99,6 +99,15 @@
 
   <!-- Scripts -->
 
+  <!-- Restore the collapsed sidebar before the first paint -->
+  <script>
+    try {
+      if (localStorage.getItem('sidebar-collapsed')) {
+        document.documentElement.setAttribute('sidebar-collapsed', '');
+      }
+    } catch (e) {}
+  </script>
+
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
   {% include js-selector.html lang=lang %}

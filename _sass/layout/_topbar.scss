@@ -84,3 +84,17 @@
     display: block;
   }
 }
+
+/* desktop: the same button collapses the sidebar */
+#sidebar-trigger {
+  @include bp.lg {
+    display: block;
+    order: -1;
+  }
+}
+
+#breadcrumb {
+  @include bp.lg {
+    margin-right: auto;
+  }
+}
