@@ -9,6 +9,7 @@ tags: [개발 일지]
 pin: false
 math: true
 mermaid: true
+render_with_liquid: false
 ---
 
 ## 개요

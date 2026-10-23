@@ -10,6 +10,7 @@ pin: false
 math: true
 mermaid: true
 published: false
+render_with_liquid: false
 ---
 
 ### 지속적 통합(Continuous Integration, CI)이란?

@@ -4,8 +4,8 @@ slug: delegate-func-action-event
 description: "C#의 대리자 개념과 delegate, Func, Action의 차이, 그리고 event 키워드의 역할을 정리했습니다."
 writer: Langerak
 date: 2024-11-8 12:00:00 +0800
-categories: [Programming Language, C#]
-tags: [C#]
+categories: [Programming Language, CSharp]
+tags: [CSharp]
 pin: false
 math: true
 mermaid: true
