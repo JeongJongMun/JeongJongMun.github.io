@@ -71,7 +71,8 @@
                         {% endif %}
                         <div class="cat-row">
                           {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
-                          <a href="{{ _category_url | relative_url }}" class="cat-link">
+                          <a href="{{ _category_url | relative_url }}" class="cat-link" title="{{ category_name }}"
+                            data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="far fa-folder{% if sub_categories_size > 0 %}-open{% endif %} fa-fw"></i>
                             <span class="cat-name">{{ category_name }}</span>
                             <span class="cat-count">{{ top_posts_size }}</span>
@@ -91,7 +92,8 @@
                                   {% assign sub_posts_size = site.categories[sub_category] | size %}
                                   {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
                                   <li class="subcat-item">
-                                    <a href="{{ _sub_ctg_url | relative_url }}" class="subcat-link">
+                                    <a href="{{ _sub_ctg_url | relative_url }}" class="subcat-link" title="{{ sub_category }}"
+                                      data-bs-toggle="tooltip" data-bs-placement="right">
                                       <i class="far fa-folder fa-fw"></i>
                                       <span class="cat-name">{{ sub_category }}</span>
                                       <span class="cat-count">{{ sub_posts_size }}</span>
