@@ -539,6 +539,10 @@ $sidebar-collapsed: 'sidebar-collapsed';
       visibility 0.3s;
   }
 
+  #main-wrapper > .container {
+    transition: left 0.3s ease;
+  }
+
   [#{$sidebar-collapsed}] {
     #sidebar {
       transform: translateX(-100%);
@@ -552,8 +556,45 @@ $sidebar-collapsed: 'sidebar-collapsed';
 
   @media (prefers-reduced-motion: reduce) {
     #sidebar,
-    #main-wrapper {
+    #main-wrapper,
+    #main-wrapper > .container {
       transition: none;
     }
   }
+}
+
+/*
+  Center the main column while collapsed. The panel takes 1/4 of the row,
+  so the main column sits 1/8 of the row left of center. Shift the container
+  right by that amount, but never past its right margin.
+*/
+@mixin -center-main($max-width, $padding) {
+  [#{$sidebar-collapsed}] #main-wrapper > .container {
+    left: max(
+      0px,
+      min(
+        calc(($max-width - 2 * $padding) / 8),
+        calc((100% - $max-width) / 2)
+      )
+    );
+  }
+}
+
+/* max-width: Bootstrap .container, padding: Bootstrap gutter / .px-xxl-5 */
+@include bp.xl {
+  /* `left: auto` can't be transitioned, so start from an explicit 0 */
+  #main-wrapper > .container {
+    position: relative;
+    left: 0;
+  }
+
+  @include -center-main(1140px, 0.75rem);
+}
+
+@include bp.xxl {
+  @include -center-main(1320px, 3rem);
+}
+
+@include bp.xxxl {
+  @include -center-main(v.$main-content-max-width, 1.75rem);
 }
